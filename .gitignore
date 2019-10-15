@@ -1,0 +1,8 @@
+*.properties
+*.aux
+*.log
+*.out
+*.toc
+*.gz
+*.bbl
+*.blg
