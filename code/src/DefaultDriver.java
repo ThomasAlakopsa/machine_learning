@@ -1,5 +1,4 @@
 import cicontest.algorithm.abstracts.AbstractDriver;
-import cicontest.algorithm.abstracts.DriversUtils;
 import cicontest.torcs.controller.extras.ABS;
 import cicontest.torcs.controller.extras.AutomatedClutch;
 import cicontest.torcs.controller.extras.AutomatedGearbox;
@@ -14,8 +13,8 @@ public class DefaultDriver extends AbstractDriver {
 
     public DefaultDriver() {
         initialize();
-        neuralNetwork = new NeuralNetwork(12, 8, 2);
-//        neuralNetwork = neuralNetwork.loadGenome();
+        neuralNetwork = new NeuralNetwork();
+        neuralNetwork.loadGenome();
     }
 
     private void initialize() {
@@ -36,20 +35,18 @@ public class DefaultDriver extends AbstractDriver {
 
     @Override
     public double getAcceleration(SensorModel sensors) {
-        double[] sensorArray = new double[4];
-        double output = neuralNetwork.getOutput(sensors);
-        return 1;
+        return neuralNetwork.compute(sensors)[1];
     }
 
     @Override
     public double getSteering(SensorModel sensors) {
-        Double output = neuralNetwork.getOutput(sensors);
-        return 0.5;
+
+        return neuralNetwork.compute(sensors)[0];
     }
 
     @Override
     public String getDriverName() {
-        return "Example Controller";
+        return "UberDriver";
     }
 
     @Override
@@ -72,34 +69,15 @@ public class DefaultDriver extends AbstractDriver {
 
     @Override
     public Action defaultControl(Action action, SensorModel sensors) {
-        if (action == null) {
-            action = new Action();
-        }
-        action.steering = DriversUtils.alignToTrackAxis(sensors, 0.5);
-        if (sensors.getSpeed() > 60.0D) {
-            action.accelerate = 0.0D;
-            action.brake = 0.0D;
-        }
+        double[] output = neuralNetwork.compute(sensors);
+        action.accelerate = output[0];
 
-        if (sensors.getSpeed() > 70.0D) {
-            action.accelerate = 0.0D;
-            action.brake = -1.0D;
-        }
-
-        if (sensors.getSpeed() <= 60.0D) {
-            action.accelerate = (80.0D - sensors.getSpeed()) / 80.0D;
-            action.brake = 0.0D;
-        }
-
-        if (sensors.getSpeed() < 30.0D) {
-            action.accelerate = 1.0D;
-            action.brake = 0.0D;
-        }
-        System.out.println("--------------" + getDriverName() + "--------------");
-        System.out.println("Steering: " + action.steering);
-        System.out.println("Acceleration: " + action.accelerate);
-        System.out.println("Brake: " + action.brake);
-        System.out.println("-----------------------------------------------");
+        if (sensors.getSpeed() > 30)
+            action.brake = output[1];
+        else
+            action.brake = 0;
+        action.steering = output[2];
         return action;
     }
+
 }
