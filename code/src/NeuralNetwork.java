@@ -47,7 +47,7 @@ public class NeuralNetwork implements Serializable {
 
         //  Create hidden layer(s)
         network.addLayer(new BasicLayer(new ActivationTANH(), true, layer1));
-        network.addLayer(new BasicLayer(new ActivationTANH(), true, layer2));
+//        network.addLayer(new BasicLayer(new ActivationTANH(), true, layer2));
 
         //  Create output layer
         network.addLayer(new BasicLayer(new ActivationTANH(), false, output));
@@ -63,8 +63,7 @@ public class NeuralNetwork implements Serializable {
         } else {
             createNeuralNetwork();
         }
-        MLDataSet trainingSet = new CSVNeuralDataSet(trainDataLocation, input, output, false);
-
+        MLDataSet trainingSet = new CSVNeuralDataSet(trainDataLocation, input, output, true);
         //training the network
         Train train = new ResilientPropagation(network, trainingSet);
 
@@ -83,7 +82,7 @@ public class NeuralNetwork implements Serializable {
                 System.out.println("Network is stored");
                 train.resume(trainStore);
             }
-        } while (train.getError() > 0.01);
+        } while (train.getError() > 0.0001);
         Encog.getInstance().shutdown();
     }
 
