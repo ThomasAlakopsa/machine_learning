@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="code:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/code_jar</output-path>
+    <root id="archive" name="code.jar">
+      <element id="module-output" name="code" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/out/artifacts/submission_jar/submission.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/out/artifacts/submission_jar/submissionOld.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/cicontest.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/TORCSLauncher.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/encog-core-3.4.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

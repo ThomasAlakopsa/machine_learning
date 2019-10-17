@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="submission_jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/submission_jar/submission.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/submission_jar/submissionOld.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

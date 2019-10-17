@@ -1,0 +1,8 @@
+Alleen trainen:
+
+Download java 1.8
+
+java -jar "jarfile" -createTraining
+java -jar "jarfile" -resumeTraining
+
+

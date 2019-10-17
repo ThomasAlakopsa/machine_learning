@@ -29,11 +29,11 @@ public class NeuralNetwork implements Serializable {
     BasicNetwork network;
 
 
-    public NeuralNetwork(int inputs, int layer1, int layer2, int layer3, int outputs) {
+    public NeuralNetwork(int inputs, int layer1, int layer2, int outputs) {
         this.input = inputs;
         this.layer1 = layer1;
         this.layer2 = layer2;
-        this.layer3 = layer3;
+        //this.layer3 = layer3;
         this.output = outputs;
     }
 
@@ -50,7 +50,7 @@ public class NeuralNetwork implements Serializable {
         //  Create hidden layer(s)
         network.addLayer(new BasicLayer(new ActivationTANH(), true, layer1));
         network.addLayer(new BasicLayer(new ActivationTANH(), true, layer2));
-//        network.addLayer(new BasicLayer(new ActivationTANH(), true, layer3));
+       // network.addLayer(new BasicLayer(new ActivationTANH(), true, layer3));
 
         //  Create output layer
         network.addLayer(new BasicLayer(new ActivationTANH(), false, output));

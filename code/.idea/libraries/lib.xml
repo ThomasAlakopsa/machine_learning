@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/cicontest.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/TORCSLauncher.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/encog-core-3.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
