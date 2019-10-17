@@ -7,6 +7,7 @@ import org.encog.ml.data.specific.CSVNeuralDataSet;
 import org.encog.neural.networks.BasicNetwork;
 import org.encog.neural.networks.layers.BasicLayer;
 import org.encog.neural.networks.training.Train;
+import org.encog.neural.networks.training.lma.LevenbergMarquardtTraining;
 import org.encog.neural.networks.training.propagation.TrainingContinuation;
 import org.encog.neural.networks.training.propagation.resilient.ResilientPropagation;
 import org.encog.persist.EncogDirectoryPersistence;
@@ -23,14 +24,16 @@ public class NeuralNetwork implements Serializable {
 
     private int layer1;
     private int layer2;
+    private int layer3;
 
     BasicNetwork network;
 
 
-    public NeuralNetwork(int inputs, int layer1, int layer2, int outputs) {
+    public NeuralNetwork(int inputs, int layer1, int layer2, int layer3, int outputs) {
         this.input = inputs;
         this.layer1 = layer1;
         this.layer2 = layer2;
+        this.layer3 = layer3;
         this.output = outputs;
     }
 
@@ -44,10 +47,10 @@ public class NeuralNetwork implements Serializable {
 
         //  Create input layer
         network.addLayer(new BasicLayer(null, true, input));
-
         //  Create hidden layer(s)
         network.addLayer(new BasicLayer(new ActivationTANH(), true, layer1));
-//        network.addLayer(new BasicLayer(new ActivationTANH(), true, layer2));
+        network.addLayer(new BasicLayer(new ActivationTANH(), true, layer2));
+//        network.addLayer(new BasicLayer(new ActivationTANH(), true, layer3));
 
         //  Create output layer
         network.addLayer(new BasicLayer(new ActivationTANH(), false, output));
@@ -66,6 +69,7 @@ public class NeuralNetwork implements Serializable {
         MLDataSet trainingSet = new CSVNeuralDataSet(trainDataLocation, input, output, true);
         //training the network
         Train train = new ResilientPropagation(network, trainingSet);
+//        LevenbergMarquardtTraining train = new LevenbergMarquardtTraining(network, trainingSet);
 
         if (bool) {
             TrainingContinuation training = loadTraining();
@@ -92,6 +96,8 @@ public class NeuralNetwork implements Serializable {
         inputValues[0] = a.getSpeed();
         inputValues[1] = a.getTrackPosition();
         inputValues[2] = a.getAngleToTrackAxis();
+//        System.out.println(a.getTrackPosition());
+
         double[] trackEdgeSensors = a.getTrackEdgeSensors();
         System.arraycopy(trackEdgeSensors, 0, inputValues, 3, trackEdgeSensors.length);
         MLData data = new BasicMLData(inputValues);
