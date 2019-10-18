@@ -1,0 +1,33 @@
+\documentclass[pt,twoside,a4paper]{article}
+\usepackage{graphicx} 
+\usepackage[english]{babel}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\usepackage{cite}
+\usepackage[skip=2pt]{caption}
+\graphicspath{ {resources/} } 
+\begin{document}
+\section{Stuck versions}
+U = Unstuck
+\begin{table}[h]
+\centering
+\begin{tabular}{llllll}
+ \textbf{Version} & \textbf{U\_TIME\_LIMIT} & \textbf{MAX\_U\_ANGLE} & \textbf{MAX\_U\_SPEED} & \textbf{MIN\_U\_DIST}  & \textbf{MAX\_U\_DIST} \\ \hline
+ 1.0 & 2.0  & 30/(180*pi) & 5.0 & 0.9 & 0.2 \\
+ 2.0 & 2.0  & 30/(180*pi) & 5.0 & 0.9 & 0.3     \\
+ &  &  &  &  &    \\
+\end{tabular}
+\end{table}
+\newpage
+\section{Race results}
+\begin{table}[h]
+\noindent
+\begin{tabular}{llllll}
+ \textbf{Map} & \textbf{Network} & \textbf{Time} & \textbf{Damage} & \textbf{Topspeed}  & \textbf{Stuck method} \\ \hline
+ Aalborg & 20\_18\_16  & 1:48:94 & 441 & 172 & Version 1 \\
+ Alpine 1 & 20\_18\_16 & 3:08:78  & 1461 & 204 & Version 2    \\
+ &  &  &  &  &    \\
+\end{tabular}
+\end{table}
+\newpage
+
+\end{document}
