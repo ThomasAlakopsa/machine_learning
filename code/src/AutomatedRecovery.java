@@ -30,7 +30,6 @@ public class AutomatedRecovery implements IExtra {
     }
 
     public boolean isStuck(SensorModel sensors) {
-        System.out.println(sensors.getTrackPosition()+ " " + MIN_UNSTUCK_DIST);
         if (Math.abs(sensors.getAngleToTrackAxis()) > MAX_UNSTUCK_ANGLE &&
                 sensors.getSpeed() < MAX_UNSTUCK_SPEED &&
                 Math.abs(sensors.getTrackPosition()) > MAX_UNSTUCK_DIST) {
