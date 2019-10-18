@@ -7,9 +7,13 @@ import cicontest.torcs.genome.IGenome;
 import scr.Action;
 import scr.SensorModel;
 
+import java.net.Inet4Address;
+import java.util.stream.DoubleStream;
+
 public class DefaultDriver extends AbstractDriver {
 
     private NeuralNetwork neuralNetwork;
+
 
     public DefaultDriver() {
         initialize();
@@ -79,5 +83,6 @@ public class DefaultDriver extends AbstractDriver {
         action.steering = output[2];
         return action;
     }
+
 
 }

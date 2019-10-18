@@ -11,6 +11,7 @@ import org.encog.neural.networks.training.lma.LevenbergMarquardtTraining;
 import org.encog.neural.networks.training.propagation.TrainingContinuation;
 import org.encog.neural.networks.training.propagation.resilient.ResilientPropagation;
 import org.encog.persist.EncogDirectoryPersistence;
+import org.encog.util.simple.EncogUtility;
 import scr.SensorModel;
 
 import java.io.*;
@@ -29,11 +30,11 @@ public class NeuralNetwork implements Serializable {
     BasicNetwork network;
 
 
-    public NeuralNetwork(int inputs, int layer1, int layer2, int outputs) {
+    public NeuralNetwork(int inputs, int layer1, int layer2, int layer3, int outputs) {
         this.input = inputs;
         this.layer1 = layer1;
         this.layer2 = layer2;
-        //this.layer3 = layer3;
+        this.layer3 = layer3;
         this.output = outputs;
     }
 
@@ -50,7 +51,7 @@ public class NeuralNetwork implements Serializable {
         //  Create hidden layer(s)
         network.addLayer(new BasicLayer(new ActivationTANH(), true, layer1));
         network.addLayer(new BasicLayer(new ActivationTANH(), true, layer2));
-       // network.addLayer(new BasicLayer(new ActivationTANH(), true, layer3));
+        network.addLayer(new BasicLayer(new ActivationTANH(), true, layer3));
 
         //  Create output layer
         network.addLayer(new BasicLayer(new ActivationTANH(), false, output));
@@ -67,9 +68,9 @@ public class NeuralNetwork implements Serializable {
             createNeuralNetwork();
         }
         MLDataSet trainingSet = new CSVNeuralDataSet(trainDataLocation, input, output, true);
+
         //training the network
         Train train = new ResilientPropagation(network, trainingSet);
-//        LevenbergMarquardtTraining train = new LevenbergMarquardtTraining(network, trainingSet);
 
         if (bool) {
             TrainingContinuation training = loadTraining();

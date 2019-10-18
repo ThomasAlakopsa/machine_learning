@@ -30,7 +30,7 @@ public class DefaultDriverAlgorithm extends AbstractAlgorithm {
             //for speedup set withGUI to false
             results = race.runRace(drivers, true);
 
-            // Save genome/nn
+            // Save genome
             DriversUtils.storeGenome(drivers[0]);
         }
         // create a checkpoint this allows you to continue this run later
@@ -49,7 +49,7 @@ public class DefaultDriverAlgorithm extends AbstractAlgorithm {
             NeuralNetwork net = new NeuralNetwork();
             net.train(true);
         } else if (args.length > 0 && args[0].equals("-createTraining")) {
-            NeuralNetwork net = new NeuralNetwork(22, 200, 40, 3);
+            NeuralNetwork net = new NeuralNetwork(22, 30, 24, 18, 3);
             net.train(false);
         } else if (args.length > 0 && args[0].equals("-run")) {
             if (DriversUtils.hasCheckpoint()) {
