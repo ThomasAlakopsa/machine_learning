@@ -13,6 +13,7 @@ import org.encog.neural.networks.training.propagation.resilient.ResilientPropaga
 import org.encog.persist.EncogDirectoryPersistence;
 import org.encog.util.simple.EncogUtility;
 import scr.SensorModel;
+import java.util.Scanner;  // Import the Scanner class
 
 import java.io.*;
 
@@ -26,15 +27,17 @@ public class NeuralNetwork implements Serializable {
     private int layer1;
     private int layer2;
     private int layer3;
+    private int layer4;
 
     BasicNetwork network;
 
 
-    public NeuralNetwork(int inputs, int layer1, int layer2, int layer3, int outputs) {
+    public NeuralNetwork(int inputs, int layer1, int layer2, int layer3, int layer4, int outputs) {
         this.input = inputs;
         this.layer1 = layer1;
         this.layer2 = layer2;
         this.layer3 = layer3;
+        this.layer4 = layer4;
         this.output = outputs;
     }
 
@@ -52,6 +55,7 @@ public class NeuralNetwork implements Serializable {
         network.addLayer(new BasicLayer(new ActivationTANH(), true, layer1));
         network.addLayer(new BasicLayer(new ActivationTANH(), true, layer2));
         network.addLayer(new BasicLayer(new ActivationTANH(), true, layer3));
+        network.addLayer(new BasicLayer(new ActivationTANH(), true, layer4));
 
         //  Create output layer
         network.addLayer(new BasicLayer(new ActivationTANH(), false, output));
@@ -118,8 +122,18 @@ public class NeuralNetwork implements Serializable {
     }
 
     public void loadGenome() {
-        File networkFile = new File(networkFolder + "current.network");
-        network = (BasicNetwork) (EncogDirectoryPersistence.loadObject(networkFile));
+        Scanner inputScanner = new Scanner(System.in);  // Create a Scanner object
+        System.out.println("Enter network file name or press enter to use current.network");
+        String networkFileName = inputScanner.nextLine();  // Read user input
+        if (!networkFileName.equals("")){
+            File networkFile = new File(networkFolder + networkFileName);
+            network = (BasicNetwork) (EncogDirectoryPersistence.loadObject(networkFile));
+        }
+        else{
+            File networkFile = new File(networkFolder + "current.network");
+            network = (BasicNetwork) (EncogDirectoryPersistence.loadObject(networkFile));
+        }
+        inputScanner.close();
     }
 
     public TrainingContinuation loadTraining() {
