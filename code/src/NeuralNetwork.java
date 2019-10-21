@@ -92,7 +92,7 @@ public class NeuralNetwork implements Serializable {
                 TrainingContinuation trainStore = train.pause();
                 storeTraining(trainStore);
                 System.out.println("Training is stored");
-                storeGenome();
+                storeGenome(train.getIteration() );
                 System.out.println("Network is stored");
                 train.resume(trainStore);
             }
@@ -136,15 +136,16 @@ public class NeuralNetwork implements Serializable {
 
 
     //Store the state of this neural network
-    public void storeGenome() {
-        File networkFile = new File(networkFolder + "current.network");
+    public void storeGenome(int iterations) {
+        File networkFile = new File(networkFolder + "current_" + iterations +".network");
         EncogDirectoryPersistence.saveObject(networkFile, network);
     }
 
     public void storeTraining(TrainingContinuation trainingContinuation) {
-        File networkFile = new File(trainFolder + "current.eg");
-        EncogDirectoryPersistence.saveObject(networkFile, trainingContinuation);
-    }
+            File networkFile = new File(trainFolder + "current.eg");
+            EncogDirectoryPersistence.saveObject(networkFile, trainingContinuation);
+        }
+
 
     public void loadGenome() {
         File networkFile = new File(networkFolder + "current.network");

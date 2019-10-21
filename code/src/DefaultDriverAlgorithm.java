@@ -49,7 +49,7 @@ public class DefaultDriverAlgorithm extends AbstractAlgorithm {
             NeuralNetwork net = new NeuralNetwork(22,3);
             net.train(true);
         } else if (args.length > 0 && args[0].equals("-createTraining")) {
-            NeuralNetwork net = new NeuralNetwork(22, 30, 24, 18, 3);
+            NeuralNetwork net = new NeuralNetwork(22, 45, 35, 25, 3);
             net.train(false);
         } else if (args.length > 0 && args[0].equals("-run")) {
             if (DriversUtils.hasCheckpoint()) {

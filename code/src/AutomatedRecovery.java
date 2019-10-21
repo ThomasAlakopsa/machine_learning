@@ -20,7 +20,7 @@ public class AutomatedRecovery implements IExtra {
     public void process(Action action, SensorModel sensors) {
         if (isStuck(sensors)) {
             System.out.println("Ik ben stuck");
-            action.steering = -sensors.getAngleToTrackAxis() /(0.366519 * 2);
+            action.steering = -sensors.getAngleToTrackAxis() /(0.366519 * 1.5);
 //            action.steering = -sensors.getAngleToTrackAxis()/; //STEERLOCK?
             action.gear = -1; // reverse gear
             action.accelerate = 0.5D; // 50% accelerator pedal
