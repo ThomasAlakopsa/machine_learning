@@ -1,18 +1,15 @@
 import org.encog.Encog;
 import org.encog.engine.network.activation.ActivationTANH;
 import org.encog.ml.data.MLData;
-import org.encog.ml.data.MLDataPair;
 import org.encog.ml.data.MLDataSet;
 import org.encog.ml.data.basic.BasicMLData;
 import org.encog.ml.data.specific.CSVNeuralDataSet;
 import org.encog.neural.networks.BasicNetwork;
 import org.encog.neural.networks.layers.BasicLayer;
 import org.encog.neural.networks.training.Train;
-import org.encog.neural.networks.training.lma.LevenbergMarquardtTraining;
 import org.encog.neural.networks.training.propagation.TrainingContinuation;
 import org.encog.neural.networks.training.propagation.resilient.ResilientPropagation;
 import org.encog.persist.EncogDirectoryPersistence;
-import org.encog.util.simple.EncogUtility;
 import scr.SensorModel;
 
 import java.io.*;
@@ -26,7 +23,8 @@ import java.util.stream.Stream;
 public class NeuralNetwork implements Serializable {
     private String trainFolder = "train/";
     private String networkFolder = "network/";
-    private String trainDataLocation = "train_data/output.csv";
+    private String trainDataLocation = "train_data/temp.csv";
+    private String networkFile = "current";
     private int input;
     private int output;
 
@@ -49,9 +47,13 @@ public class NeuralNetwork implements Serializable {
         this.input = inputs;
         this.output = outputs;
     }
+    public NeuralNetwork(int inputs, int outputs, String networkFile) {
+        this.input = inputs;
+        this.output = outputs;
+        this.networkFile = networkFile;
+    }
 
     private void createNeuralNetwork() {
-        //22 100 40 3
         //	Give network structure
         network = new BasicNetwork();
 
@@ -92,7 +94,7 @@ public class NeuralNetwork implements Serializable {
                 TrainingContinuation trainStore = train.pause();
                 storeTraining(trainStore);
                 System.out.println("Training is stored");
-                storeGenome(train.getIteration() );
+                storeGenome(train.getIteration());
                 System.out.println("Network is stored");
                 train.resume(trainStore);
             }
@@ -100,7 +102,7 @@ public class NeuralNetwork implements Serializable {
         Encog.getInstance().shutdown();
     }
 
-    public void checkTraining(){
+    public void checkTraining() {
         loadGenome();
         MLDataSet trainingSet;
         float sum = 0;
@@ -109,11 +111,11 @@ public class NeuralNetwork implements Serializable {
             List<String> result = walk.filter(Files::isRegularFile)
                     .map(x -> x.toString()).collect(Collectors.toList());
 
-            for(int i = 0; i <result.size(); i++){
+            for (int i = 0; i < result.size(); i++) {
                 trainingSet = new CSVNeuralDataSet(result.get(i), input, output, true);
-                sum+=network.calculateError(trainingSet);
+                sum += network.calculateError(trainingSet);
             }
-            System.out.println("Validation, Average error: " + sum/result.size());
+            System.out.println("Validation, Average error: " + sum / result.size());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -137,19 +139,19 @@ public class NeuralNetwork implements Serializable {
 
     //Store the state of this neural network
     public void storeGenome(int iterations) {
-        File networkFile = new File(networkFolder + "current_" + iterations +".network");
+        File networkFile = new File(networkFolder + "current_" + iterations + ".network");
         EncogDirectoryPersistence.saveObject(networkFile, network);
     }
 
     public void storeTraining(TrainingContinuation trainingContinuation) {
-            File networkFile = new File(trainFolder + "current.eg");
-            EncogDirectoryPersistence.saveObject(networkFile, trainingContinuation);
-        }
+        File networkFile = new File(trainFolder + "current.eg");
+        EncogDirectoryPersistence.saveObject(networkFile, trainingContinuation);
+    }
 
 
     public void loadGenome() {
-        File networkFile = new File(networkFolder + "current.network");
-        network = (BasicNetwork) (EncogDirectoryPersistence.loadObject(networkFile));
+        File file = new File(networkFolder + networkFile + ".network");
+        network = (BasicNetwork) (EncogDirectoryPersistence.loadObject(file));
     }
 
     public TrainingContinuation loadTraining() {

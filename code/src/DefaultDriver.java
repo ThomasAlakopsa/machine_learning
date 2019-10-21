@@ -8,6 +8,7 @@ import scr.Action;
 import scr.SensorModel;
 
 import java.net.Inet4Address;
+import java.util.Scanner;
 import java.util.stream.DoubleStream;
 
 public class DefaultDriver extends AbstractDriver {
@@ -17,7 +18,6 @@ public class DefaultDriver extends AbstractDriver {
 
     public DefaultDriver() {
         initialize();
-        neuralNetwork = new NeuralNetwork(22, 3);
         neuralNetwork.loadGenome();
     }
 
@@ -25,7 +25,12 @@ public class DefaultDriver extends AbstractDriver {
         this.enableExtras(new AutomatedClutch());
         this.enableExtras(new AutomatedGearbox());
         this.enableExtras(new AutomatedRecovery());
-        this.enableExtras(new ABS());
+//        this.enableExtras(new ABS());
+        Scanner inputScanner = new Scanner(System.in);  // Create a Scanner object
+        System.out.println("Enter network file name or press enter to use current.network");
+        String networkFileName = inputScanner.nextLine();  // Read user input
+        neuralNetwork = new NeuralNetwork(22, 3, networkFileName);
+
     }
 
     @Override
