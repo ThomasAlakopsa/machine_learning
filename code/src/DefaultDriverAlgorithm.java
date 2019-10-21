@@ -57,7 +57,10 @@ public class DefaultDriverAlgorithm extends AbstractAlgorithm {
             } else {
                 algorithm.run();
             }
-        } else {
+        } else if(args.length > 0 && args[0].equals("-checkTraining")){
+            NeuralNetwork net = new NeuralNetwork(22,3);
+            net.checkTraining();
+        }else {
             algorithm.run();
         }
     }

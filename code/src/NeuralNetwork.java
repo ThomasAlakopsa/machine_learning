@@ -1,6 +1,7 @@
 import org.encog.Encog;
 import org.encog.engine.network.activation.ActivationTANH;
 import org.encog.ml.data.MLData;
+import org.encog.ml.data.MLDataPair;
 import org.encog.ml.data.MLDataSet;
 import org.encog.ml.data.basic.BasicMLData;
 import org.encog.ml.data.specific.CSVNeuralDataSet;
@@ -15,6 +16,12 @@ import org.encog.util.simple.EncogUtility;
 import scr.SensorModel;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class NeuralNetwork implements Serializable {
     private String trainFolder = "train/";
@@ -91,6 +98,29 @@ public class NeuralNetwork implements Serializable {
             }
         } while (train.getError() > 0.0001);
         Encog.getInstance().shutdown();
+    }
+
+    public void checkTraining(){
+        loadGenome();
+        MLDataSet trainingSet;
+        try (Stream<Path> walk = Files.walk(Paths.get("check_train_data"))) {
+
+            List<String> result = walk.filter(Files::isRegularFile)
+                    .map(x -> x.toString()).collect(Collectors.toList());
+
+            for(int i = 0; i <result.size(); i++){
+                trainingSet = new CSVNeuralDataSet(result.get(i), input, output, true);
+                for(MLDataPair pair: trainingSet)
+                {
+                    MLData output = network.compute(pair.getInput());
+                    System.out.println("Network output: " + output + " (should be close to " + pair.getIdeal());
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 

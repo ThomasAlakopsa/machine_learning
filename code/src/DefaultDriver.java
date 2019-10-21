@@ -76,8 +76,12 @@ public class DefaultDriver extends AbstractDriver {
         double[] output = neuralNetwork.compute(sensors);
         action.accelerate = output[0];
 
-        if (sensors.getSpeed() > 30)
+        if (sensors.getSpeed() > 30) {
+            if (output[1] < 0) {
+                output[1] = 0;
+            }
             action.brake = output[1];
+        }
         else
             action.brake = 0;
         action.steering = output[2];
