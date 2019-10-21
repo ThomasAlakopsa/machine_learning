@@ -103,6 +103,7 @@ public class NeuralNetwork implements Serializable {
     public void checkTraining(){
         loadGenome();
         MLDataSet trainingSet;
+        float sum = 0;
         try (Stream<Path> walk = Files.walk(Paths.get("check_train_data"))) {
 
             List<String> result = walk.filter(Files::isRegularFile)
@@ -110,13 +111,9 @@ public class NeuralNetwork implements Serializable {
 
             for(int i = 0; i <result.size(); i++){
                 trainingSet = new CSVNeuralDataSet(result.get(i), input, output, true);
-                for(MLDataPair pair: trainingSet)
-                {
-                    MLData output = network.compute(pair.getInput());
-                    System.out.println("Network output: " + output + " (should be close to " + pair.getIdeal());
-                }
+                sum+=network.calculateError(trainingSet);
             }
-
+            System.out.println("Validation, Average error: " + sum/result.size());
         } catch (IOException e) {
             e.printStackTrace();
         }
