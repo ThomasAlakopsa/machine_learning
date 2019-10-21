@@ -46,7 +46,7 @@ public class DefaultDriverAlgorithm extends AbstractAlgorithm {
         DefaultDriverAlgorithm algorithm = new DefaultDriverAlgorithm();
         DriversUtils.registerMemory(algorithm.getDriverClass());
         if (args.length > 0 && args[0].equals("-resumeTraining")) {
-            NeuralNetwork net = new NeuralNetwork();
+            NeuralNetwork net = new NeuralNetwork(22,3);
             net.train(true);
         } else if (args.length > 0 && args[0].equals("-createTraining")) {
             NeuralNetwork net = new NeuralNetwork(22, 30, 24, 18, 3);
