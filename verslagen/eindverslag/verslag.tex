@@ -1,17 +1,19 @@
 \documentclass{article}
 \usepackage{graphicx} 
-\usepackage[english]{babel}
+\usepackage[dutch]{babel}
 \newcommand\tab[1][1cm]{\hspace*{#1}}
 \usepackage{cite}
 \usepackage[skip=2pt]{caption}
 \graphicspath{ {resources/} } 
+\usepackage{hyperref}
 \begin{document}
 \sffamily
 \begin{titlepage}
   \centering
     \vfill
     {\bfseries\Huge
-      verslag Tinlab Machine Learning \\
+      Tinlab Machine Learning \\
+      Groepsverslag
         \vskip2cm
       }
       {\bfseries\Large
@@ -28,8 +30,8 @@
       }
       {
         \bfseries\normalsize
-        \vskip1cm
-        \today\\
+        \vskip2cm
+        \today
     }    
     \vfill
     \includegraphics[width=4cm]{logohr.png}
@@ -43,19 +45,26 @@
 \input{verklarendewoordenlijst.tex}
 
 \section{Inleiding}
+Voor Tinlab Machine Learning wordt de verworven kennis toegepast door een intelligente controller te maken voor race simulatie Torcs. In plaats van zelf aan de knoppen te zitten en de auto te besturen, zal er een programma geschreven worden die aan de hand van getrainde modellen en binnenkomende data zelfstandig de auto bestuurd. 
+
 
 \section{Projectopzet}
 
 \input{vooronderzoek.tex}
 
-\section{Methodes}
+\section{Methode}
+Aan het begin van het project zijn meerdere datasets gemaakt door de input en output te loggen van een al goed rijdend systeem. Er is voor gekozen om deze datasets te gebruiken. \\\\ 
+Om te communiceren met de "Torcs server" kan er gebruikt gemaakt worden van een client in Java of C++. Er is voor gekozen om de Java client te gebruiken, met als voornaamste reden dat er op github~\cite{java-client} een opzet te vinden is om een Neural Netwerk te schrijven. Deze versie maakt gebruik van een algoritme, waar geen Machine Learning voor wordt gebruikt. \\\\
+Het eindproduct zal een neuraal netwerk zijn dat getraind is door middel van een dataset en verifi\"erd door andere datasets. Aanpassingen in de instellingen van het neurale netwerk zullen uiteindelijk leiden tot het beste progamma. Het neurale netwerk zal tijdens het trainen bij bepaalde iteraties opgeslagen worden en bij vroegtijdig stopzetten kan de training ook weer hervat worden vanaf de laatst opgeslagen iteratie. \\\\
+Het getrainde neurale netwerk kan worden geverifi\"erd worden op twee manieren, namelijk met de trainingsets of door het \textit{live} te runnen op een baan. Bij het het live runnen is duidelijk te zien hoe het neurale netwerk reageert op bochten. In de resultaten zal dan het verband uitgelegd worden tussen de instellingen van het neurale netwerk en de real-time uitvoering. 
 
 \section{Resultaten}
 
 \section{Conclusie}
 
 \newpage
-\bibliographystyle{IEEEtran}
-\bibliography{IEEEabrv,references}
 
+\bibliographystyle{plain}
+%\bibliography{IEEEabrv,references}
+\bibliography{references}
 \end{document}
