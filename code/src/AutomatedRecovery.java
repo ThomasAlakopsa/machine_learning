@@ -7,7 +7,6 @@ import scr.SensorModel;
 
 public class AutomatedRecovery implements IExtra {
     private int stuck = 0;
-    private int stuck2 = 0;
     private double UNSTUCK_TIME_LIMIT = 2.0;
     private double MAX_UNSTUCK_ANGLE = 30 / (180 * Math.PI);
     private double MAX_UNSTUCK_SPEED = 5.0;
@@ -20,21 +19,6 @@ public class AutomatedRecovery implements IExtra {
 
     @Override
     public void process(Action action, SensorModel sensors) {
-
-        if (sensors.getSpeed() <= 50){
-            stuck2++;
-            if (stuck2 <= 100){
-                action.brake = 0;
-                return;
-            }
-        }
-        if (stuck2 > 100){
-            action.brake = 0;
-            if(sensors.getSpeed() > 60){
-                stuck2 = 0;
-            }
-
-        }
 
         if (isStuck(sensors)) {
             System.out.println("Ik ben stuck");

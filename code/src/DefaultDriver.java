@@ -24,11 +24,12 @@ public class DefaultDriver extends AbstractDriver {
     private void initialize() {
         this.enableExtras(new AutomatedClutch());
         this.enableExtras(new AutomatedGearbox());
+        this.enableExtras(new AdjustBreaks());
         this.enableExtras(new AutomatedRecovery());
-        this.enableExtras(new ABS());
+//        this.enableExtras(new ABS()); Some Maps go faster, but not smart
 
         Scanner inputScanner = new Scanner(System.in);  // Create a Scanner object
-        System.out.println("Enter network file name or press enter to use current.network");
+        System.out.println("Enter network file name or press enter to use 100_60_40_V3");
         String networkFileName = inputScanner.nextLine();  // Read user input
         if (networkFileName.length() == 0)
             networkFileName = "100_60_40_V3";

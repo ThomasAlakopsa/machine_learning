@@ -23,7 +23,7 @@ import java.util.stream.Stream;
 public class NeuralNetwork implements Serializable {
     private String trainFolder = "train/";
     private String networkFolder = "network/";
-    private String trainDataLocation = "train_data/temp.csv";
+    private String trainDataLocation = "train_data/combined_data.csv";
     private String networkFile = "current";
     private int input;
     private int output;
