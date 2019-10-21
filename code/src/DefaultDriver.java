@@ -25,10 +25,13 @@ public class DefaultDriver extends AbstractDriver {
         this.enableExtras(new AutomatedClutch());
         this.enableExtras(new AutomatedGearbox());
         this.enableExtras(new AutomatedRecovery());
-//        this.enableExtras(new ABS());
+        this.enableExtras(new ABS());
+
         Scanner inputScanner = new Scanner(System.in);  // Create a Scanner object
         System.out.println("Enter network file name or press enter to use current.network");
         String networkFileName = inputScanner.nextLine();  // Read user input
+        if (networkFileName.length() == 0)
+            networkFileName = "100_60_40_V3";
         neuralNetwork = new NeuralNetwork(22, 3, networkFileName);
 
     }
@@ -79,16 +82,14 @@ public class DefaultDriver extends AbstractDriver {
     @Override
     public Action defaultControl(Action action, SensorModel sensors) {
         double[] output = neuralNetwork.compute(sensors);
+        if (output[1] < 0) {
+            output[1] = 0;
+        }
         action.accelerate = output[0];
 
-        if (sensors.getSpeed() > 30) {
-            if (output[1] < 0) {
-                output[1] = 0;
-            }
-            action.brake = output[1];
-        }
-        else
-            action.brake = 0;
+
+        action.brake = output[1];
+
         action.steering = output[2];
         return action;
     }

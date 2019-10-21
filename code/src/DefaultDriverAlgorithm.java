@@ -1,4 +1,5 @@
 import java.io.File;
+import java.util.Scanner;
 
 import cicontest.algorithm.abstracts.AbstractAlgorithm;
 import cicontest.algorithm.abstracts.DriversUtils;
@@ -58,7 +59,10 @@ public class DefaultDriverAlgorithm extends AbstractAlgorithm {
                 algorithm.run();
             }
         } else if(args.length > 0 && args[0].equals("-checkTraining")){
-            NeuralNetwork net = new NeuralNetwork(22,3);
+            Scanner inputScanner = new Scanner(System.in);  // Create a Scanner object
+            System.out.println("Enter network file name or press enter to use current.network");
+            String networkFileName = inputScanner.nextLine();  // Read user input
+            NeuralNetwork net = new NeuralNetwork(22, 3, networkFileName);
             net.checkTraining();
         }else {
             algorithm.run();
