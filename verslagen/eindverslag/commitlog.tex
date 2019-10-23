@@ -1,0 +1,85 @@
+\subsection{Commitlog}
+\label{commitlog}
+%git log --color --graph --oneline > l.txt
+
+\let\XXegroup\relax
+\expandafter\def\csname XX[31\endcsname{%
+  \bgroup\let\XXegroup\egroup\leavevmode\color{red}}
+\expandafter\def\csname XX[1;31\endcsname{%
+  \bgroup\let\XXegroup\egroup\leavevmode\bfseries\color{red}}
+\expandafter\def\csname XX[32\endcsname{%
+  \bgroup\let\XXegroup\egroup\leavevmode\color{green}}
+\expandafter\def\csname XX[1;32\endcsname{%
+  \bgroup\let\XXegroup\egroup\leavevmode\bfseries\color{green}}
+\expandafter\def\csname XX[33\endcsname{%
+  \bgroup\let\XXegroup\egroup\leavevmode\color{yellow}}
+\expandafter\def\csname XX[1;33\endcsname{%
+  \bgroup\let\XXegroup\egroup\leavevmode\bfseries\color{yellow}}
+\expandafter\def\csname XX[34\endcsname{%
+  \bgroup\let\XXegroup\egroup\leavevmode\color{cyan}}
+\expandafter\def\csname XX[1;34\endcsname{%
+  \bgroup\let\XXegroup\egroup\leavevmode\bfseries\color{cyan}}
+\expandafter\def\csname XX[35\endcsname{%
+  \bgroup\let\XXegroup\egroup\leavevmode\color{magenta}}
+\expandafter\def\csname XX[1;35\endcsname{%
+  \bgroup\let\XXegroup\egroup\leavevmode\bfseries\color{magenta}}
+\expandafter\def\csname XX[36\endcsname{%
+  \bgroup\let\XXegroup\egroup\leavevmode\color{blue}}
+\expandafter\def\csname XX[1;36\endcsname{%
+  \bgroup\let\XXegroup\egroup\leavevmode\bfseries\color{blue}}
+
+
+\expandafter\def\csname XX[\endcsname{\XXegroup}
+\catcode`\^^[=13
+\def^^[#1m{%
+\expandafter\ifx\csname XX#1\endcsname\relax
+\typeout{XX#1}%
+\else
+\csname XX#1\endcsname
+\fi}
+\
+\begin{verbatim}
+* [33m88810a0[m finished perspectron in vooronderzoek
+* [33ma560bed[m worked on perceptron explanation
+* [33me1d4ef3[m Add AdjustBreaks method, add validation sets
+* [33m18492f9[m Change break algoritmn
+* [33m23d92b0[m Add filtering scorebord
+* [33me72aeff[m Add option to give file name
+* [33m4a8bab8[m finished documenting all the training results
+* [33mf98924e[m added all the new networks
+* [33mad5b9cf[m Methode eerste versie
+* [33m40a5a30[m Add verify method
+* [33maae00ab[m Break can't be less then 0
+* [33mcdacea0[m Fix resume method
+* [33m87a6cf2[m Groepsverslag opzet opgezet
+* [33mf4f1786[m Add 100_40
+* [33m820c658[m added fucntion that asks for name of the file or press enter to use default
+* [33m54dd446[m added 80_65_50_35 version 1, 2 and 3 and 44_33_33_22 version 1,2 and 3. all with documented results
+* [33m2d21c56[m addes the result of network 200_100_40 and 100_60_40
+* [33m07ad208[m Add new score
+* [33m61f81b0[m updated version of 200_100_40 and 100_60_40
+*   [33m54e3c40[m Merge branch 'master' of https://github.com/ThomasAlakopsa/machine_learning
+[32m|[m[33m\[m  
+[32m|[m * [33mae46afe[m Generate scoreboard pdf latex
+[32m|[m * [33m321361d[m Run new tests
+* [33m|[m [33mc850536[m added my networks
+[33m|[m[33m/[m  
+* [33m9247e8d[m Nieuwe trainde networks
+* [33m7468141[m add scoreboard and remove print
+* [33m6fba598[m add scoreboard and remove print
+* [33me84e80c[m Change stuck method & add new training
+* [33mfeb9b08[m added the best network we have for now
+* [33m2f0c7ed[m Add extra layer & stuck method
+* [33mf23e4e0[m Add right train_data
+* [33m567d067[m Test
+* [33m6117f60[m Add neuralnetworks
+* [33m5fb6117[m Add runnable
+* [33m8bb5459[m Added Neural Network with Encog
+* [33mb6b5ec9[m removed not needed files
+* [33ma7054b0[m added .bbl .gz and .blg files in the git ignore
+* [33m1bf3bd6[m updated .gitignore and added folders for personal reports and a template for the final report
+* [33m991ddb0[m setting up work station / code is running
+* [33mb741a3f[m added the code from Elvira
+* [33m0a4409a[m first commit
+
+\end{verbatim}
