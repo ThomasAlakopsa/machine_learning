@@ -39,8 +39,27 @@ In afbeelding \ref{perceptron3} is een netwerk te zien, waar de eerste laag van 
 \newline
 De volgende stap is om ons netwerk zelf lerend te maken. Om dit te doen moet je kleine aanpassingen kunnen maken aand de weights en de biases. Deze kleine aanpassingen moet daarna ook een klein effect hebben op de output van het neurale netwerk. Echter dat is niet wat er gebeurt met perceptronen want deze heeft maar 2 outputs, een 1 en een 0. Een kleine aanpassing zal daarom niks doen of de hele uitkomst van de perceptron omdraaien. Je kan niet probleem omzeilen door een ander types neurons te gebruiken ,zoals de Sigmoid en tanh neurons.
 
-\subsubsection{tanh neurons}
-sigmoid en tanh neurons lijken erg op perceptrons alleen de manier hoe de ouput berekend word is anders. 
+\subsubsection{activation function}
+De output van een neuron word berekend door een activation functions. Hier kijken we nu alleen naar de sigmoid en tanh activation functions want deze werken goed voor de driver. %ALLEXXXX klopt dit?
+De sigmoid en tanh neurons lijken erg op perceptrons alleen de manier hoe de ouput berekend word is anders. Een sigmoid function neemt alle mogelijke nummers als een input en berekend het naar een getal tussen de 0 en 1.\\
+%todo insert sigmoid
+Een tanh fucntion neemt alle mogelijke nummers als input en brekend het naar en getal tussen de -1 en de 0.\\
+%todo insert tanh
+De twee berekeningen lijken erg op elkaar omdat tanh een scaled vorm is van de sigmoid functions.\\
+omdat de data die gebruikt word voor het sturen van de torcs auto tussen de -1 en 1 zit is het verstandig om gebruik te maken van de tanh functie. Omdat tanh alle reëel getal tussen de -1 en 1 kan hebben, dus waarden zoals -0.875 ... en 0.132. Dit zorgt ervoor dat de uitkomst van een neuron niet een simple een ja of nee is maar veel complexer getal dat van alles en nog wat kan betekenen. Nu als er een kleine verandering plaatsvind in de weights of biases van het neurale netwerk zullen deze kleine verandering ook te vinden worden in de output uiteindelijk zorgt dit ervoor dat het neurale netwerk zelf kan leren.\\\\
+\subparagraph{zelf lerend}
+Om je netwerk wat te laten leren heb je eerst data nodig over wat je hem wil laten leren. Voor de opdracht worden er .cvs files gebruirk waar de train data van meerderen record record races op verschillende race tracks in staat.\\\\
+\noindent hierna heb je een methode nodig om je neural netwerk te trainen zoals forward propagation, back propagation en resilent propagation. het doel van de algoritmns zijn om alle neurons een weight en een bias te geven. hoe dat in praktijk gaat hangt af van je dataset en welk algoritmn je gaat gebruiken maar in het kort gaat het zo:
+\begin{itemize}
+\item De start waarden voor je weights en biases zijn vaak random.
+\item Je voert je dataset aand het network en dan krijg je daarvan de resultaten.
+\item Deze resultaten vergalijk je met wat er verwacht word en je berekend het verlies.
+\item Gebruik deze informatie om je netwerk bijtewerken zodat het verlies verminderd word.
+\item Herhaal all deze stappen tot dat je netwerk voldoet.
+\end{itemize}
+
+\subparagraph{overfitting}
+Neurale netwerken zijn erg kwetsbaar voor overfitting. Het is waar dat door meer factoren in het neurale netwerk op te nemen. Het altijd per definitie beter zal maken voor de gegevens die we al hebben ,maar een betere pasvorm voor de beschikbare gegevens betekent niet een betere voorspelling. een te eenvoudig neural netwerk maken, kan het esencetiële patroon in de data niet vastleggen. Aan de andere kant wordt een neural netwerk dat te gecompliceerd is te gevoelig voor de specifiece data die we hadden vastgelegt. Bijgevolg precies omdat het zo fijn is afgestemd op die specifieke dataset zal de oplossingen die het produceert zeer variabel zijn.\\\\
 
 
 \subsection{python}
