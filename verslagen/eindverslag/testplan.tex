@@ -1,1 +1,14 @@
 \subsection{Testplan}
+
+Er zijn verschillende instellingen mogelijk voor het neurale netwerk. Elk getrainde neuraal netwerk zal vergeleken moet worden om te kijken welke instelling het beste werkt. Hierbij is het belangrijk dat de error waardes zo laag mogelijk zijn, het netwerk zo min mogelijk crasht, gemakkelijk herstelt na een crash en het snelste een parcours kan volgen. Op de volgende manieren zal getest worden. \\\\
+Er zijn beste races toegevoegd, er kan gemakkelijk uitgerekend worden wat de error per parcours is. Deze waardes kunnen dan vergeleken worden en hieruit kan de beste eruitgehaald worden. \\\\
+Om te kijken of het neurale netwerk crasht kan op de volgende manieren: 
+\begin{itemize}
+\item Uitvoeren en kijken naar de damage in het scorebord aan het einde van de race. Hiervoor hoeft dus niet de race gevolgd te worden.
+\item De race handmatig uitvoeren en opletten tijdens de race of de robot crasht. Hiervoor moet er naar de race gekeken worden door iemand.
+\end{itemize}
+
+\noindent Kijken of de robot gemakkelijk herstelt na een crash is eigenlijk alleen te doen door een race volledig te bekijken. Elke crashsituatie is uniek, dus het is niet zeker of het neurale netwerk zichzelf terug kan plaatsen op de weg. Er kan voor gekozen worden om de simulatie gelijk te laten crashen en kijken hoe dit oppakt of te races op een dirttrack. Hier zal die snel tegen een muur rijden, echter weet je niet of de unstuck methode hetzelfde werkt met verschillende omstandigheden. \\\\
+Voor de laatste check kan gemakkelijk een script gerund worden, deze voert het neurale netwerk uit op een selectie van banen en noteert de tijd. Hiervoor is menselijke interactie niet nodig. Alleen bij het kiezen van het beste netwerk uiteindelijk. \\\\
+
+Gedurende het testen wordt er gekeken welke testmethodes het beste werken en daar zullen we dan ook uiteindelijk mee gaan testen. In resultaten zal dit verder worden onderzocht. 
