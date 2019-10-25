@@ -46,16 +46,16 @@
 \newpage
 
 \section{Samenvatting}
-
+Voor Tinlab Machine Learning moest een controller worden gemaakt voor het computer programma Torcs. Om dit te realiseren is onderzoek gedaan in Machine Learning principes. Dit onderzoek heeft geleid tot een netwerk dat gemaakt is met de Java library Encog. Dit netwerk kan een auto in Torcs op elk parcours 
+van start tot finish brengen zonder dat deze botst. Zelfs met de "Noicy sensoren" is dit nog niet voorgekomen. 
 
 \section{Inleiding}
 Voor Tinlab Machine Learning wordt de verworven kennis toegepast door een intelligente controller te maken voor race simulatie Torcs. In plaats van zelf aan de knoppen te zitten en de auto te besturen, zal er een programma geschreven worden die aan de hand van getrainde modellen en binnenkomende data zelfstandig de auto bestuurd. 
 
 
 \section{Projectopzet}
-Er wordt tijdens dit project gebruik gemaakt van Agile. Het werk word verdeelt in kleine opdrachten die afgemaakt moeten worden in een periode van twee weken. Daarnaast word er een algemene planning wordt gemaakt, de eerste draft is in section \ref{eerste-draft} te vinden. De Uiteindelijke gerealiseerde planning staat in bijlage \ref{uiteind-plan}.\\\\
+Er wordt tijdens dit project gebruik gemaakt van Agile. Het werk word verdeelt in kleine opdrachten die afgemaakt moeten worden in een periode van twee weken. Voordat de kleine opdrachten worden gemaakt, is er een algemene planning ndoig, de eerste draft is in section \ref{eerste-draft} te vinden. De Uiteindelijke gerealiseerde planning staat in bijlage \ref{uiteind-plan}.\\\\
 Om de code en verslagen op te slaan van dit project gebruiken wij Github, in bijlage \ref{commitlog} is de log te vinden van de commits. Alle verslagen worden lokaal geschreven in Latex en als de taak klaar is gepusht op Github.
-
 
 \subsection{Algemene planning}
 \label{eerste-draft}
@@ -101,7 +101,9 @@ Should have & Als project lid, wil ik veel verschillende soorten netwerken train
 \end{itemize}
 
 \pagebreak
-
+\pagebreak
+\input{vooronderzoek.tex}
+\pagebreak
 \section{Methode}
 Aan het begin van het project zijn meerdere datasets gemaakt door de input en output te loggen van een al goed rijdend systeem. Deze datasets zullen gebruikt worden om het neurale netwerk te trainen en/of testen.\\\\ 
 Voor communicatie met de "Torcs server" kan er gebruik gemaakt worden van een client in Java of C++. De Java client heeft de voorkeur, met als voornaamste reden dat er op github~\cite{java-client} een opzet te vinden is om een Neural Netwerk te schrijven in de taal java. Deze versie maakt gebruik van een algoritme, dat niet door Machine Learning is gemaakt. \\\\
@@ -111,9 +113,6 @@ Java is gekozen als taal om het neurale netwerk te trainen, om dit te maken is e
 \\\\
 Trainen en cree\"eren van het netwerk moet gemakkelijk kunnen op een server, zodat beide projectgenoten bij de training kunnen komen. Dit kan door middel van een jar file, deze jar file en de datasets zijn als enige nodig om een neuraal netwerk te genereren en trainen.
 
-\pagebreak
-\input{vooronderzoek.tex}
-\pagebreak
 \section{Resultaten}
 
 Voor alle neuralnetwerken die er zijn getrained is er een standaard scoring methode gebruikt. Elke netwerk is getest op 3 verschillende race banen.
