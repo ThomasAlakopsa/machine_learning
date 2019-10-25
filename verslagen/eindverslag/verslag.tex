@@ -9,6 +9,7 @@
 \usepackage{color}
 \usepackage{tabularx,ragged2e}
 \usepackage{float}
+\usepackage{mathtools}
 \newcolumntype{C}{>{\Centering\arraybackslash}X} % centered "X" column
 \begin{document}
 \sffamily
@@ -111,8 +112,17 @@ Het getrainde neurale netwerk kan worden geverifi\"erd worden op twee manieren, 
 \input{vooronderzoek.tex}
 \pagebreak
 \section{Resultaten}
+
+Voor alle neuralnetwerken die er zijn getrained is er een standaard scoring methode gebruikt. Elke netwerk is getest op 3 verschillende race banen.
+\begin{itemize}
+\item Aalborg
+\item Alpine 1
+\item Alpine 2
+\end{itemize}
+Dit zijn alle 3 asphalt banen. die in goede mix van verschillende soorten bochten en rechten stukken hebben zodat we een netwerk kunnen testen op alle benodigde kwaliteiten. Er word genoteerd in hoeveel tijd het gekost heeft om 1 ronde te rijden, de maximum snelheid die het netwerk berijkt heeft, de schade die het heeft opgelopen en welke verzie van de stuk methode is gebruikt. All deze resultaten staan hier gedocumenteerd \ref{testresulaten}.
 %Uitleg geven over de testresulaten, zie bijlage \ref{testresulaten}. 
 
+Uit deze resultaten kwam het all heel snel naar voren dat de error waarde van een netwerk niet een goed refference punt was voor het meten van succes. Er zijn netwerken geweest met een zeer lage error waarde die zeer slecht scoorde op de punten die wij hebben vast gesteld voor een goed netwerk.
 %Uitleg waarom we niks gedaan hebben met de errorwaarde tests.
 
 %Uitleg waarom alleen Tanh  waardes
@@ -123,8 +133,8 @@ omdat de data die gebruikt word voor het sturen van de torcs auto tussen de -1 e
 %Uiteindelijke keuze om 2 netwerken volledig handmatig te testen en vergelijken. 
 
 %Gedeelte over de stuck methode, hoe die is gemaakt. Uitleg erover. (Doet Alex)
-
-%Uiteindelijke keuze voor beste netwerk. 
+		
+%Uiteindelijke keuze voor beste netwerk. (Alex )
 
 %Wat hadden we beter kunnen doen, wat kan er verbeterd worden. 
 \section{Conclusie}
