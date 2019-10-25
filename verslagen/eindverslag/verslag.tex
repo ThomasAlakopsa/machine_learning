@@ -102,23 +102,39 @@ should have & Als project lid, wil ik veel verschillende soorten netwerken train
 \pagebreak
 
 \section{Methode}
-Aan het begin van het project zijn meerdere datasets gemaakt door de input en output te loggen van een al goed rijdend systeem. Er is voor gekozen om deze datasets te gebruiken. \\\\ 
-Om te communiceren met de "Torcs server" kan er gebruikt gemaakt worden van een client in Java of C++. Er is voor gekozen om de Java client te gebruiken, met als voornaamste reden dat er op github~\cite{java-client} een opzet te vinden is om een Neural Netwerk te schrijven. Deze versie maakt gebruik van een algoritme, waar geen Machine Learning voor wordt gebruikt. \\\\
-Het eindproduct zal een neuraal netwerk zijn dat getraind is door middel van een dataset en verifi\"erd door andere datasets. Aanpassingen in de instellingen van het neurale netwerk zullen uiteindelijk leiden tot het beste progamma. Het neurale netwerk zal tijdens het trainen bij bepaalde iteraties opgeslagen worden en bij vroegtijdig stopzetten kan de training ook weer hervat worden vanaf de laatst opgeslagen iteratie. \\\\
-Het getrainde neurale netwerk kan worden geverifi\"erd worden op twee manieren, namelijk met de trainingsets of door het \textit{live} te runnen op een baan. Bij het het live runnen is duidelijk te zien hoe het neurale netwerk reageert op bochten. In de resultaten zal dan het verband uitgelegd worden tussen de instellingen van het neurale netwerk en de real-time uitvoering. 
+Aan het begin van het project zijn meerdere datasets gemaakt door de input en output te loggen van een al goed rijdend systeem. Deze datasets zullen gebruikt worden om het neurale netwerk te trainen en/of testen.\\\\ 
+Voor communicatie met de "Torcs server" kan er gebruik gemaakt worden van een client in Java of C++. De Java client heeft de voorkeur, met als voornaamste reden dat er op github~\cite{java-client} een opzet te vinden is om een Neural Netwerk te schrijven in de taal java. Deze versie maakt gebruik van een algoritme, dat niet door Machine Learning is gemaakt. \\\\
+Het eindproduct zal een neuraal netwerk zijn dat getraind is door middel van een dataset en verifi\"erd door andere datasets. Aanpassingen in de instellingen van het neurale netwerk zullen uiteindelijk leiden tot het beste programma. Het neurale netwerk zal tijdens het trainen bij bepaalde iteraties opgeslagen worden en bij vroegtijdig stopzetten kan de training ook weer hervat worden, vanaf de laatst opgeslagen iteratie. \\\\
+Het getrainde neurale netwerk kan worden geverifi\"erd worden op twee manieren, namelijk met de trainingsets of door het \textit{live} te runnen op een baan. Bij het het live runnen is duidelijk te zien hoe het neurale netwerk reageert op bochten. In de resultaten zal dan het verband uitgelegd worden tussen de instellingen van het neurale netwerk en de real-time uitvoering.  Meer informatie hierover is te vinden in het testplan, wat wij ook zullen uitvoeren, zie bijlage \ref{testplan}. \\\\
+%Uitleg geven over de methodes die we willen gebruiken(Python of Encog)- Doet Alex
 \pagebreak
 \input{vooronderzoek.tex}
 \pagebreak
 \section{Resultaten}
+%Uitleg geven over de testresulaten, zie bijlage \ref{testresulaten}. 
 
+%Uitleg waarom we niks gedaan hebben met de errorwaarde tests.
+
+%Uitleg waarom alleen Tanh  waardes
+omdat de data die gebruikt word voor het sturen van de torcs auto tussen de -1 en 1 zit is het verstandig om gebruik te maken van de tanh functie. Omdat tanh alle reëel getal tussen de -1 en 1 kan hebben, dus waarden zoals -0.875 ... en 0.132. Dit zorgt ervoor dat de uitkomst van een neuron niet een simple een ja of nee is maar veel complexer getal dat van alles en nog wat kan betekenen. Nu als er een kleine verandering plaatsvind in de weights of biases van het neurale netwerk zullen deze kleine verandering ook te vinden worden in de output uiteindelijk zorgt dit ervoor dat het neurale netwerk zelf kan leren.\\\\
+%Uitleg waarom we uiteindelijk alleen Encog hebben gebruikt (Doet Alex).
+
+
+%Uiteindelijke keuze om 2 netwerken volledig handmatig te testen en vergelijken. 
+
+%Gedeelte over de stuck methode, hoe die is gemaakt. Uitleg erover. (Doet Alex)
+
+%Uiteindelijke keuze voor beste netwerk. 
+
+%Wat hadden we beter kunnen doen, wat kan er verbeterd worden. 
 \section{Conclusie}
-
+%Samenvatting Resultaten en wat er nog verbeterd kan worden
 \pagebreak
 \section{Bijlages}
 \subsection{Architectuurontwerp}
-Alex maakt een mooi plaatje
+%Alex maakt een mooi plaatje
 \input{bijlages/testplan.tex}
-\subsection{Testresultaten}
+\pagebreak
 \input{bijlages/scoreboard.tex}
 
 \pagebreak
