@@ -52,8 +52,8 @@ Voor Tinlab Machine Learning wordt de verworven kennis toegepast door een intell
 
 
 \section{Projectopzet}
-Er wordt tijdens dit project gebruik gemaakt van Agile, waar we het werk van dit project opdelen in kleine opdrachten en afmaken in een periode van twee weken. Een algemene planning wordt gemaakt, de eerste draft is in section \ref{eerste-draft} te vinden. Uiteindelijke gerealiseerde planning staat in bijlage \ref{uiteind-plan}.\\\\
-Om de code en verslagen op te slaan van dit project gebruiken wij Github, in bijlage \ref{commitlog} is de log te vinden van de commits. Alle verslagen worden lokaal geschreven in Latex en aan het einde van de dag gepusht op Github.
+Er wordt tijdens dit project gebruik gemaakt van Agile. Het werk word verdeelt in kleine opdrachten die afgemaakt moeten worden in een periode van twee weken. Daarnaast word er een algemene planning wordt gemaakt, de eerste draft is in section \ref{eerste-draft} te vinden. De Uiteindelijke gerealiseerde planning staat in bijlage \ref{uiteind-plan}.\\\\
+Om de code en verslagen op te slaan van dit project gebruiken wij Github, in bijlage \ref{commitlog} is de log te vinden van de commits. Alle verslagen worden lokaal geschreven in Latex en als de taak klaar is gepusht op Github.
 
 
 \subsection{Algemene planning}
@@ -72,9 +72,11 @@ Om de code en verslagen op te slaan van dit project gebruiken wij Github, in bij
 \end{tabularx}
 \end{table}
 
+\newpage
+
 \subsection*{Product backlog}
 
-\begin{table}[h!]
+\begin{table}[h]
 \begin{tabularx}{\textwidth}{l C}
  \textbf{Prioriteit} & \textbf{User story}\\ \hline
  Must & Als projectlid, neem ik deel aan de boekenclub gehost bij klasgenoten, 
@@ -83,21 +85,21 @@ zodat ikmeer informatie over Machine Learning verkrijg\\ \hline
 Must & Als project lid, maak ik een persoonlijk verslag, over de wekelijkse geleerde stof en zelfopgedane kennis, zodat ik meer informatie over Machine Learning verkijg.   \\\hline
  Must & Als projectlid, schrijf ik een ethische verantwoording, zodat er een ethisch product wordt geleverd.   \\\hline
  Must & Als projectlid, wil ik een controller trainen, die een auto rijdt in het computerprogramma torcs, zodat het vak behaald kan worden \\\hline
+Should have & Als project lid, train ik een netwerk dat geen schade rijdt, omdat een controller die niet crashed goed getrained is. \\\hline
+should have & Als project lid, wil ik veel verschillende soorten netwerken trainen, zodat we veel netwerken met elkaar kunnen vergalijken en een conclusie kunnen trekken over welke eigenschappen een postive of negative invloed hebben. \\
 \end{tabularx}
-\end{table}
-
+\end{table} 
+ 
 \subsection*{Eisen controller}
 \begin{itemize}
-\item snel
+\item Er moet snel de baan aflegt worden (50 km/u gaan over heel de baan is dus niet goed.)
 \item getraind worden door een van de AI technieken
+\item neurale network is getrained met de gegeven train data
 \item voorafgesteld doel halen (Start - Finish)
-\item Weinig damage
-\item Geen idee verder
-.
+\item Er moet zo mogelijk schade aan de auto zitten
 \end{itemize}
 
 \pagebreak
-
 
 \section{Methode}
 Aan het begin van het project zijn meerdere datasets gemaakt door de input en output te loggen van een al goed rijdend systeem. Er is voor gekozen om deze datasets te gebruiken. \\\\ 
@@ -108,7 +110,7 @@ Het getrainde neurale netwerk kan worden geverifi\"erd worden op twee manieren, 
 \input{vooronderzoek.tex}
 \pagebreak
 \section{Resultaten}
-omdat de data die gebruikt word voor het sturen van de torcs auto tussen de -1 en 1 zit is het verstandig om gebruik te maken van de tanh functie. Omdat tanh alle reëel getal tussen de -1 en 1 kan hebben, dus waarden zoals -0.875 ... en 0.132. Dit zorgt ervoor dat de uitkomst van een neuron niet een simple een ja of nee is maar veel complexer getal dat van alles en nog wat kan betekenen. Nu als er een kleine verandering plaatsvind in de weights of biases van het neurale netwerk zullen deze kleine verandering ook te vinden worden in de output uiteindelijk zorgt dit ervoor dat het neurale netwerk zelf kan leren.\\\\
+
 \section{Conclusie}
 
 \pagebreak
