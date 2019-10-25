@@ -86,17 +86,17 @@ Must & Als project lid, maak ik een persoonlijk verslag, over de wekelijkse gele
  Must & Als projectlid, schrijf ik een ethische verantwoording, zodat er een ethisch product wordt geleverd.   \\\hline
  Must & Als projectlid, wil ik een controller trainen, die een auto rijdt in het computerprogramma torcs, zodat het vak behaald kan worden \\\hline
 Should have & Als project lid, train ik een netwerk dat geen schade rijdt, omdat een controller die niet crashed goed getrained is. \\\hline
-should have & Als project lid, wil ik veel verschillende soorten netwerken trainen, zodat we veel netwerken met elkaar kunnen vergalijken en een conclusie kunnen trekken over welke eigenschappen een postive of negative invloed hebben. \\
+Should have & Als project lid, wil ik veel verschillende soorten netwerken trainen, zodat we veel netwerken met elkaar kunnen vergelijken en een conclusie kunnen trekken over welke eigenschappen een postieve of negatieve invloed hebben. \\
 \end{tabularx}
 \end{table} 
  
 \subsection*{Eisen controller}
 \begin{itemize}
 \item Er moet snel de baan aflegt worden (50 km/u gaan over heel de baan is dus niet goed.)
-\item getraind worden door een van de AI technieken
-\item neurale network is getrained met de gegeven train data
-\item voorafgesteld doel halen (Start - Finish)
-\item Er moet zo mogelijk schade aan de auto zitten
+\item Getraind worden door een van de AI technieken
+\item Neurale network is getrained met de gegeven train data
+\item Voorafgesteld doel halen (Start - Finish)
+\item Er moet zo weinig mogelijke schade aan de auto zitten
 \end{itemize}
 
 \pagebreak
@@ -106,7 +106,10 @@ Aan het begin van het project zijn meerdere datasets gemaakt door de input en ou
 Voor communicatie met de "Torcs server" kan er gebruik gemaakt worden van een client in Java of C++. De Java client heeft de voorkeur, met als voornaamste reden dat er op github~\cite{java-client} een opzet te vinden is om een Neural Netwerk te schrijven in de taal java. Deze versie maakt gebruik van een algoritme, dat niet door Machine Learning is gemaakt. \\\\
 Het eindproduct zal een neuraal netwerk zijn dat getraind is door middel van een dataset en verifi\"erd door andere datasets. Aanpassingen in de instellingen van het neurale netwerk zullen uiteindelijk leiden tot het beste programma. Het neurale netwerk zal tijdens het trainen bij bepaalde iteraties opgeslagen worden en bij vroegtijdig stopzetten kan de training ook weer hervat worden, vanaf de laatst opgeslagen iteratie. \\\\
 Het getrainde neurale netwerk kan worden geverifi\"erd worden op twee manieren, namelijk met de trainingsets of door het \textit{live} te runnen op een baan. Bij het het live runnen is duidelijk te zien hoe het neurale netwerk reageert op bochten. In de resultaten zal dan het verband uitgelegd worden tussen de instellingen van het neurale netwerk en de real-time uitvoering.  Meer informatie hierover is te vinden in het testplan, wat wij ook zullen uitvoeren, zie bijlage \ref{testplan}. \\\\
-%Uitleg geven over de methodes die we willen gebruiken(Python of Encog)- Doet Alex
+Java is gekozen als taal om het neurale netwerk te trainen, om dit te maken is een library nodig. Na wat googlen kwamen we op twee opties, de java library Encog gebruiken(Link toevoegen) of een andere taal gebruiken en deze koppelen aan de client van Elvira door een UDP verbinding. De laatste optie zal het meeste werk kosten, dus er is gekozen om eerst te kijken wat Encog voor Neuraal Netwerk opleverd. 
+\\\\
+Trainen en cree\"eren van het netwerk moet gemakkelijk kunnen op een server, zodat beide projectgenoten bij de training kunnen komen. Dit kan door middel van een jar file, deze jar file en de datasets zijn als enige nodig om een neuraal netwerk te genereren en trainen.
+
 \pagebreak
 \input{vooronderzoek.tex}
 \pagebreak
