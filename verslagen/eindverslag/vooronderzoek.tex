@@ -60,8 +60,10 @@ Er is data nodig om een neuraal netwerk te trainen. Nadat deze data verzameld is
 \end{itemize}
 
 \subsubsection{Overfitting}
-Neurale netwerken zijn erg kwetsbaar voor overfitting. Dit is als een neural netwerk alleen kan omgaan met de data uit een specifieke dataset en niet goed reageert op toekomstige waarnemingen. 
-
-Wat kan je eraan doen?
-
-Door meer factoren in het neurale netwerk op te nemen zal het altijd per definitie beter maken voor de gegevens die we al hebben, maar een betere pasvorm voor de beschikbare gegevens betekent niet een betere prestatie. Een te eenvoudig neural netwerk maken, kan het esencetiële patroon in de data niet vastleggen. Aan de andere kant wordt een neural netwerk dat te gecompliceerd is te gevoelig voor de specifiece data die we hadden vastgelegt. Als gevolg precies omdat het zo fijn is afgestemd op die specifieke dataset zal de oplossingen die het produceert zeer variabel zijn \cite{algoritms}.\\\\
+Neurale netwerken zijn erg kwetsbaar voor overfitting. Dit is als een neural netwerk alleen kan omgaan met de data uit een specifieke dataset en niet goed reageert op toekomstige waarnemingen\cite{algoritms}.\\ 
+\newline
+Overfiting onstaat door teveel factoren in het neurale netwerk op te nemen. Dit kan door heel veel specifieke data te geven aan het netwerk of door heel veel neuron te gebruiken die connecties gaan maken met die data. Als je deze dingen doet zal het netwerk altijd beter passend worden voor de gegevens die we al hebben, maar een betere pasvorm voor de beschikbare data betekent niet een betere prestatie\cite{algoritms}. \\
+\newline
+Dit klopt ook voor een netwerk met teweinig train data en/of neurons, als je er een te eenvoudig neural netwerk van maakt dan kan je het essentiele patroon in de data niet vastleggen. Een neural netwerk dat te gecompliceerd is word tegevoelig voor de specifiece data die we hadden vastgelegt. Als gevolg precies omdat het zo fijn is afgestemd op die specifieke train data gegeven word zal die voor oplossingen die met nieuwe informatie komen dan waar die me getrained is zwaar varieren en onbetrouwbare outputs geven\cite{algoritms}.\\
+\newline
+Dit is niet echt te verkomen, alleen door goed na tedenken over welke informatie je het netwerk zal laten geven, hoelang je het zal trainen en hoeveel neurons en layers het netwerk zal krijgen kan je zorgen dat je geen last krijgt van overfitting. De netwerken moet altijd getest worden of ze deze in de buurt komen van de resultaten die verwacht worden of dat ze inplaats daar van zijn getrained op test.\cite{algoritms}.
