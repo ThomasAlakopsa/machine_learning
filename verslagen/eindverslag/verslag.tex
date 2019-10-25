@@ -125,19 +125,33 @@ Voor alle neuralnetwerken die er zijn getrained is er een standaard scoring meth
 Dit zijn alle 3 asphalt banen. die in goede mix van verschillende soorten bochten en rechten stukken hebben zodat we een netwerk kunnen testen op alle benodigde kwaliteiten. Er word genoteerd in hoeveel tijd het gekost heeft om 1 ronde te rijden, de maximum snelheid die het netwerk berijkt heeft, de schade die het heeft opgelopen en welke verzie van de stuk methode is gebruikt. All deze resultaten staan hier gedocumenteerd \ref{testresulaten}.
 %Uitleg geven over de testresulaten, zie bijlage \ref{testresulaten}. 
 
-Uit deze resultaten kwam het all heel snel naar voren dat de error waarde van een netwerk niet een goed refference punt was voor het meten van succes. Er zijn netwerken geweest met een zeer lage error waarde die zeer slecht scoorde op de punten die wij hebben vast gesteld voor een goed netwerk.
+Uit deze resultaten kwam het all heel snel naar voren dat de error waarde van een netwerk niet een goed refference punt is voor het meten van succes. Er zijn netwerken geweest met een zeer lage error waarde die zeer slecht scoorde op de succes punten die wij hebben vast gesteld voor een goed netwerk. En er waren netwerken met een hoge error waarde die het goed deden voor onze succes criteria.
 %Uitleg waarom we niks gedaan hebben met de errorwaarde tests.
 
 %Uitleg waarom alleen Tanh  waardes
 omdat de data die gebruikt word voor het sturen van de torcs auto tussen de -1 en 1 zit is het verstandig om gebruik te maken van de tanh functie. Omdat tanh alle reëel getal tussen de -1 en 1 kan hebben, dus waarden zoals -0.875 ... en 0.132. Dit zorgt ervoor dat de uitkomst van een neuron niet een simple een ja of nee is maar veel complexer getal dat van alles en nog wat kan betekenen. Nu als er een kleine verandering plaatsvind in de weights of biases van het neurale netwerk zullen deze kleine verandering ook te vinden worden in de output uiteindelijk zorgt dit ervoor dat het neurale netwerk zelf kan leren.\\\\
 %Uitleg waarom we uiteindelijk alleen Encog hebben gebruikt (Doet Alex).
 
-
+Uit de resultaten bleken dat er een aatal netwerken waaren die boven de anderen uitstaken:
+\begin{itemize}
+\item 2 laags netwerk: eerste laag van 100 neurons, tweede laag van 40 neurons
+\item 3 laags netwerk: eerste laag van 100 neurons, tweede laag van 60 en een derde laag van 40 neurons.
+\item 2 laags netwerk: eerste laag van 200 neurons, tweede laag van 40 neurons. 
+\end{itemize}
+Met deze neurale netwerken zijn we nog veder gaan testen op ook andere racetracks dan de 3 waar ze allemaal systematies op getest zijn.
 %Uiteindelijke keuze om 2 netwerken volledig handmatig te testen en vergelijken. 
+
 
 %Gedeelte over de stuck methode, hoe die is gemaakt. Uitleg erover. (Doet Alex)
 		
 %Uiteindelijke keuze voor beste netwerk. (Alex )
+
+\textbf{wat kan beter}
+We waren te laat begonnen met een goed testplan op te zetten. Vooral aan een structuur over hoe we de presatatie kunnen beoordelen van de verschillende netwerken. \\\\
+
+\textbf{wat ging goed}
+we hadden daily standup meetings op school, hierdoor was het altijd duidelijk wat we moesten doen, hoe het met de andere persoon ging en wat voor werk er was vericht de dag daavoor.
+
 
 %Wat hadden we beter kunnen doen, wat kan er verbeterd worden. 
 \section{Conclusie}
