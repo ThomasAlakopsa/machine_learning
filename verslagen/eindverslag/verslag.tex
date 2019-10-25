@@ -8,6 +8,7 @@
 \usepackage{hyperref}
 \usepackage{color}
 \usepackage{tabularx,ragged2e}
+\usepackage{float}
 \newcolumntype{C}{>{\Centering\arraybackslash}X} % centered "X" column
 \begin{document}
 \sffamily
@@ -45,7 +46,6 @@
 
 \section{Samenvatting}
 
-\input{verklarendewoordenlijst.tex}
 
 \section{Inleiding}
 Voor Tinlab Machine Learning wordt de verworven kennis toegepast door een intelligente controller te maken voor race simulatie Torcs. In plaats van zelf aan de knoppen te zitten en de auto te besturen, zal er een programma geschreven worden die aan de hand van getrainde modellen en binnenkomende data zelfstandig de auto bestuurd. 
@@ -115,8 +115,9 @@ omdat de data die gebruikt word voor het sturen van de torcs auto tussen de -1 e
 \section{Bijlages}
 \subsection{Architectuurontwerp}
 Alex maakt een mooi plaatje
-\input{testplan.tex}
-%Testresulaten
+\input{bijlages/testplan.tex}
+\subsection{Testresultaten}
+\input{bijlages/scoreboard.tex}
 
 \pagebreak
 \subsection{Planning}
@@ -137,7 +138,7 @@ Alex maakt een mooi plaatje
 \caption{Uiteindelijke gerealiseerde planning in weken. \textit{np = nieuwe periode}}
 \end{table}
 \newpage
-\input{commitlog.tex}
+\input{bijlages/commitlog.tex}
 \bibliographystyle{plain}
 %\bibliography{IEEEabrv,references}
 \bibliography{references}
