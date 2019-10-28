@@ -47,18 +47,22 @@ public class DefaultDriverAlgorithm extends AbstractAlgorithm {
         DefaultDriverAlgorithm algorithm = new DefaultDriverAlgorithm();
         DriversUtils.registerMemory(algorithm.getDriverClass());
         if (args.length > 0 && args[0].equals("-resumeTraining")) {
+            //if a training for the network exist it can be resumed
             NeuralNetwork net = new NeuralNetwork(22,3);
             net.train(true);
         } else if (args.length > 0 && args[0].equals("-createTraining")) {
+            // define the size of the inputs, outputs and layers of the network and create a new network
             NeuralNetwork net = new NeuralNetwork(22, 45, 35, 25, 3);
             net.train(false);
         } else if (args.length > 0 && args[0].equals("-run")) {
+            //start a race with a given network
             if (DriversUtils.hasCheckpoint()) {
                 DriversUtils.loadCheckpoint().run(true);
             } else {
                 algorithm.run();
             }
         } else if(args.length > 0 && args[0].equals("-checkTraining")){
+            // check the training of a network
             Scanner inputScanner = new Scanner(System.in);  // Create a Scanner object
             System.out.println("Enter network file name or press enter to use current.network");
             String networkFileName = inputScanner.nextLine();  // Read user input

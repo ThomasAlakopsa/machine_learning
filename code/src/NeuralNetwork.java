@@ -34,7 +34,7 @@ public class NeuralNetwork implements Serializable {
 
     BasicNetwork network;
 
-
+    //setting up the neural network
     public NeuralNetwork(int inputs, int layer1, int layer2, int layer3, int outputs) {
         this.input = inputs;
         this.layer1 = layer1;
@@ -78,19 +78,23 @@ public class NeuralNetwork implements Serializable {
         } else {
             createNeuralNetwork();
         }
+        //loading the train data for a neural network
         MLDataSet trainingSet = new CSVNeuralDataSet(trainDataLocation, input, output, true);
 
         //training the network
         Train train = new ResilientPropagation(network, trainingSet);
 
         if (bool) {
+            //resuming a training if one already exist
             TrainingContinuation training = loadTraining();
             train.resume(training);
         }
         do {
+            // Set Epoch too 200
             train.iteration(200);
             System.out.println("Epoch #" + train.getIteration() + " Error:" + train.getError());
             if (train.getIteration() % 1000 == 0) {
+                // after 1000 interations save the training and the network
                 TrainingContinuation trainStore = train.pause();
                 storeTraining(trainStore);
                 System.out.println("Training is stored");
@@ -102,6 +106,8 @@ public class NeuralNetwork implements Serializable {
         Encog.getInstance().shutdown();
     }
 
+
+    // check the the error of a trained network by walking through the network and comparing it with the train data
     public void checkTraining() {
         loadGenome();
         MLDataSet trainingSet;

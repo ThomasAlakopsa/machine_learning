@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="code_jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/code_jar/70_50_30.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/code_jar/80_65_50_35.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/code_jar/44_33_33_22.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/code_jar/100_40.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/code_jar/200_40Thomas.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/code_jar/45_35_25.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/code_jar/40_40_26.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/artifacts/code_jar/200_100_40Thomas.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
