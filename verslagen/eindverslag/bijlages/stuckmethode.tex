@@ -1,0 +1,33 @@
+\begin{lstlisting}
+@Override
+    public void process(Action action, SensorModel sensors) {
+
+        if (isStuck(sensors)) {
+            System.out.println("Ik ben stuck");
+            action.steering = -sensors.getAngleToTrackAxis() /(0.366519 * 2);
+            action.gear = -1; // reverse gear
+            action.accelerate = 0.5D; // 50% accelerator pedal
+            action.brake = 0.0D; // no brakes
+        }
+        return;
+    }
+
+    public boolean isStuck(SensorModel sensors) {
+
+        if (Math.abs(sensors.getAngleToTrackAxis()) > MAX_UNSTUCK_ANGLE &&
+                sensors.getSpeed() < MAX_UNSTUCK_SPEED &&
+                Math.abs(sensors.getTrackPosition()) > MAX_UNSTUCK_DIST) {
+            if (stuck > MAX_UNSTUCK_COUNT && sensors.getTrackPosition() * sensors.getAngleToTrackAxis() < 0.0) {
+                return true;
+            } else {
+
+                stuck++;
+                return false;
+            }
+        } else {
+            stuck = 0;
+            return false;
+        }
+    }
+
+\end{lstlisting}

@@ -10,6 +10,28 @@
 \usepackage{tabularx,ragged2e}
 \usepackage{float}
 \usepackage{mathtools}
+\usepackage{listings}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
 \newcolumntype{C}{>{\Centering\arraybackslash}X} % centered "X" column
 \begin{document}
 \sffamily
@@ -114,19 +136,26 @@ Java is gekozen als taal om het neurale netwerk te trainen, om dit te maken is e
 Trainen en cree\"eren van het netwerk moet gemakkelijk kunnen op een server, zodat beide projectgenoten bij de training kunnen komen. Dit kan door middel van een jar file, deze jar file en de datasets zijn als enige nodig om een neuraal netwerk te genereren en trainen.
 \pagebreak
 \section{Resultaten}
-Voor all de neuralnetwerken die er getrained zijn is er een standaard scoring methode gebruikt. Elke netwerk is getest op 3 verschillende race banen.
+Voor all de neuralnetwerken die er getrained zijn is er een standaard scoring methode gebruikt. De trainingsdata is gemaakt op asfalt, daarom is het belangrijk dat er ook getest wordt op asfalt. Daarnaast is er gekeken of er bochten, rechte stukken en hellingen aanwezig zijn. De volgende parcous(tracks) zijn uitgekozen.
 \begin{itemize}
 \item Aalborg
 \item Alpine 1
 \item Alpine 2
 \end{itemize}
-Dit zijn alle 3 asphalt banen. Die een goede mix zijn van verschillende soorten bochten, rechten stukken en hellingen zodat de netwerken getest worden op alle benodigde kwaliteiten. De resultaten worden genoteerd in hoeveel tijd het gekost heeft om 1 ronde te rijden, de maximum snelheid die het netwerk berijkt heeft, de schade die het heeft opgelopen en welke verzie van de stuk methode is gebruikt. All deze resultaten staan hier gedocumenteerd \ref{testresulaten}.
+De resultaten worden genoteerd in hoeveel tijd het gekost heeft om 1 ronde te rijden, de maximum snelheid die het netwerk berijkt heeft, de schade die het heeft opgelopen en welke verzie van de stuk methode is gebruikt. All deze resultaten staan hier gedocumenteerd \ref{testresulaten}. \\\\
 %Uitleg geven over de testresulaten, zie bijlage \ref{testresulaten}. 
 
-Uit deze resultaten kwam het all heel snel naar voren dat de error waarde van een netwerk niet een goed refference punt is voor het meten van succes. Er zijn netwerken geweest met een zeer lage error waarde die zeer slecht presatie geleverd hebben, en er waren netwerken met een hoge error waarde die juist wel een goede prestatie hebben geleverd. De meesten nerwerken die hebben getrained doen het het beste na de 3000/5000 trainingen. Voor dit aantal training heeft het netwerk niet genoeg geleerd er worden er erg veel fouten gemaakt. Na de 5000 trainingen gaat de presatie weer omlaag, waarschijnlijk door overfitting.
+Uit deze resultaten kwam het all heel snel naar voren dat de error waarde van een netwerk niet een goede referentie punt is voor het controleren of een netwerk goed werkt. Er zijn netwerken geweest met een zeer lage error waarde die zeer slecht presatie geleverd hebben, en er waren netwerken met een hoge error waarde die juist wel een goede prestatie hebben geleverd. De meesten nerwerken die hebben getrained doen het het beste na de 3000/5000 trainingen. Voor dit aantal training heeft het netwerk niet genoeg geleerd er worden er erg veel fouten gemaakt. Na de 5000 trainingen gaat de presatie weer omlaag, waarschijnlijk door overfitting. \\\\
+
+Voorbeelden van 'slecht presterende' netwerken: 
+\begin{itemize}
+\item Langs de muur rijden
+\item Niet op de weg rijden
+\item Zichzelf vastrijden.
+\end{itemize}
 %Uitleg waarom we niks gedaan hebben met de errorwaarde tests.
 
-Omdat de data die gebruikt word voor het sturen van de torcs auto tussen de -1 en 1 zit is het verstandig om gebruik te maken van de tanh functie. Omdat tanh alle reëel getal tussen de -1 en 1 kan hebben, dus waarden zoals -0.875 ... en 0.132. Dit zorgt ervoor dat de uitkomst van een neuron niet een simple een ja of nee is maar veel complexer getal dat van alles en nog wat kan betekenen. Nu als er een kleine verandering plaatsvind in de weights of biases van het neurale netwerk zullen deze kleine verandering ook te vinden worden in de output uiteindelijk zorgt dit ervoor dat het neurale netwerk zelf kan leren.\\\\
+Omdat de data die gebruikt word voor het sturen van de torcs auto tussen de -1 en 1 zit is het verstandig om gebruik te maken van de tanh functie. Omdat tanh alle reëel getal tussen de -1 en 1 kan hebben, dus waarden zoals -0.875 ... en 0.132. Dit zorgt ervoor dat de uitkomst van een neuron niet een simple een ja of nee is maar veel complexer getal dat van alles en nog wat kan betekenen. Nu als er een kleine verandering plaatsvind in de weights of biases van het neurale netwerk zullen deze kleine verandering ook te vinden worden in de output, wat uiteindelijk zorgt  dat het neurale netwerk zelf kan leren.\\\\
 %Uitleg waarom alleen Tanh  waardes
 
 
@@ -138,7 +167,7 @@ Uit de resultaten bleken dat er een aatal netwerken waaren die boven de anderen 
 \item 3 laags netwerk: eerste laag van 100 neurons, tweede laag van 60 en een derde laag van 40 neurons.
 \item 2 laags netwerk: eerste laag van 200 neurons, tweede laag van 40 neurons. 
 \end{itemize}
-Met deze neurale netwerken zijn we nog veder gaan testen op ook andere racetracks dan de 3 waar ze allemaal systematies op getest zijn.
+Met deze neurale netwerken zijn we nog veder gaan testen op, andere racetracks dan de 3 waar ze allemaal systematisch op getest zijn.
 %Uiteindelijke keuze om 2 netwerken volledig handmatig te testen en vergelijken. 
 
 
@@ -184,7 +213,17 @@ we hadden daily standup meetings op school, hierdoor was het altijd duidelijk wa
 \caption{Uiteindelijke gerealiseerde planning in weken. \textit{np = nieuwe periode}}
 \end{table}
 \newpage
+
+
+\subsection{Code}
+\subsubsection*{Stuck methode}
+\input{bijlages/stuckmethode.tex}
+\pagebreak
+\subsubsection*{Remmen begin race}
+\input{bijlages/Adjustbreaks.tex}
+\newpage
 \input{bijlages/commitlog.tex}
+\newpage
 \bibliographystyle{plain}
 %\bibliography{IEEEabrv,references}
 \bibliography{references}
