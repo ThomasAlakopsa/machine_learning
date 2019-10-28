@@ -130,62 +130,26 @@ Should have & Als project lid, wil ik veel verschillende soorten netwerken train
 Aan het begin van het project zijn meerdere datasets gemaakt door de input en output te loggen van een al goed rijdend systeem. Deze datasets zullen gebruikt worden om het neurale netwerk te trainen en/of testen.\\\\ 
 Voor communicatie met de "Torcs server" kan er gebruik gemaakt worden van een client in Java of C++. De Java client heeft de voorkeur, met als voornaamste reden dat er op github~\cite{java-client} een opzet te vinden is om een Neural Netwerk te schrijven in de taal java. Deze versie maakt gebruik van een algoritme, dat niet door Machine Learning is gemaakt. \\\\
 Het eindproduct zal een neuraal netwerk zijn dat getraind is door middel van een dataset en verifi\"erd door andere datasets. Aanpassingen in de instellingen van het neurale netwerk zullen uiteindelijk leiden tot het beste programma. Het neurale netwerk zal tijdens het trainen bij bepaalde iteraties opgeslagen worden en bij vroegtijdig stopzetten kan de training ook weer hervat worden, vanaf de laatst opgeslagen iteratie. \\\\
-Het getrainde neurale netwerk kan worden geverifi\"erd worden op twee manieren, namelijk met de trainingsets of door het \textit{live} te runnen op een baan. Bij het het live runnen is duidelijk te zien hoe het neurale netwerk reageert op bochten. In de resultaten zal dan het verband uitgelegd worden tussen de instellingen van het neurale netwerk en de real-time uitvoering.  Meer informatie hierover is te vinden in het testplan, wat wij ook zullen uitvoeren, zie bijlage \ref{testplan}. \\\\
+Het getrainde neurale netwerk kan worden geverifi\"erd worden op twee manieren, namelijk met de datasets of door het neurale netwerk te gebruiken in Torcs. Resulaten van de test met de datasets is binnen enkele secondes uitgerekend en kan het eerste onderscheid geven. Bij het gebruiken van Torcs is duidelijk te zien hoe het neurale netwerk reageert op bochten en of het vastloopt. In de resultaten zal dan het verband uitgelegd worden tussen de instellingen van het neurale netwerk en resultaten.  Meer informatie hierover is te vinden in het testplan, wat wij ook zullen uitvoeren, zie bijlage \ref{testplan}. \\\\
 Java is gekozen als taal om het neurale netwerk te trainen, om dit te maken is een library nodig. Na wat googlen kwamen we op twee opties, de java library Encog gebruiken(Link toevoegen) of een andere taal gebruiken en deze koppelen aan de client van Elvira door een UDP verbinding. De laatste optie zal het meeste werk kosten, dus er is gekozen om eerst te kijken wat Encog voor Neuraal Netwerk opleverd. 
 \\\\
 Trainen en cree\"eren van het netwerk moet gemakkelijk kunnen op een server, zodat beide projectgenoten bij de training kunnen komen. Dit kan door middel van een jar file, deze jar file en de datasets zijn als enige nodig om een neuraal netwerk te genereren en trainen.
 \pagebreak
 \section{Resultaten}
-Voor all de neuralnetwerken die er getrained zijn is er een standaard scoring methode gebruikt. De trainingsdata is gemaakt op asfalt, daarom is het belangrijk dat er ook getest wordt op asfalt. Daarnaast is er gekeken of er bochten, rechte stukken en hellingen aanwezig zijn. De volgende parcous(tracks) zijn uitgekozen.
-\begin{itemize}
-\item Aalborg
-\item Alpine 1
-\item Alpine 2
-\end{itemize}
-De resultaten worden genoteerd in hoeveel tijd het gekost heeft om 1 ronde te rijden, de maximum snelheid die het netwerk berijkt heeft, de schade die het heeft opgelopen en welke verzie van de stuk methode is gebruikt. All deze resultaten staan hier gedocumenteerd \ref{testresulaten}. \\\\
+Tijdens het uitvoeren van de methodes van het testplan ~\ref{testplan} werd al snel duidelijk dat 'e'en methode niet het gewenste resultaat levert. De error die wordt berekent met de datasets heeft geen verband met de prestatie in Torcs. Uiteindelijk is het belangrijk dat het neurale netwerk in Torcs. Daarom is besloten om deze methode niet verder te gebruiken, maar deze optie is nog wel in de source code te vinden.  \\\\
+In de testresulaten ~\ref{testresulaten} is goed te het verschil te zien tussen de netwerken. Tijdens het testen hebben we een stuckmethode en remmethode toegevoegd. In bepaalde situaties schrijven deze methodes de output van het neurale netwerk over. Het kan voorkomen dat het neurale netwerk van de baan raakt, dan weet deze niet meer wat er moet gebeuren. Ook kwamen we erachter dat het neurale netwerk moeite heeft met opstarten als deze stil staat. Dit was voor elk getrainde netwerk en daarom was een algemene oplossing nodig. In bijlage \ref{breaks} en \ref{stuckmethode} is de uiteindelijke implementatie te vinden van deze methodes. \\\\
 %Uitleg geven over de testresulaten, zie bijlage \ref{testresulaten}. 
-
-Uit deze resultaten kwam het all heel snel naar voren dat de error waarde van een netwerk niet een goede referentie punt is voor het controleren of een netwerk goed werkt. Er zijn netwerken geweest met een zeer lage error waarde die zeer slecht presatie geleverd hebben, en er waren netwerken met een hoge error waarde die juist wel een goede prestatie hebben geleverd. De meesten nerwerken die hebben getrained doen het het beste na de 3000/5000 trainingen. Voor dit aantal training heeft het netwerk niet genoeg geleerd er worden er erg veel fouten gemaakt. Na de 5000 trainingen gaat de presatie weer omlaag, waarschijnlijk door overfitting. \\\\
-
-Voorbeelden van 'slecht presterende' netwerken: 
-\begin{itemize}
-\item Langs de muur rijden
-\item Niet op de weg rijden
-\item Zichzelf vastrijden.
-\end{itemize}
-%Uitleg waarom we niks gedaan hebben met de errorwaarde tests.
-
-Omdat de data die gebruikt word voor het sturen van de torcs auto tussen de -1 en 1 zit is het verstandig om gebruik te maken van de tanh functie. Omdat tanh alle reëel getal tussen de -1 en 1 kan hebben, dus waarden zoals -0.875 ... en 0.132. Dit zorgt ervoor dat de uitkomst van een neuron niet een simple een ja of nee is maar veel complexer getal dat van alles en nog wat kan betekenen. Nu als er een kleine verandering plaatsvind in de weights of biases van het neurale netwerk zullen deze kleine verandering ook te vinden worden in de output, wat uiteindelijk zorgt  dat het neurale netwerk zelf kan leren.\\\\
-%Uitleg waarom alleen Tanh  waardes
-
-
-%Uitleg waarom we uiteindelijk alleen Encog hebben gebruikt (Doet Alex).
-
-Uit de resultaten bleken dat er een aatal netwerken waaren die boven de anderen uitstaken:
+De meeste netwerken trainen niet verder binnen de range van 3000 en 5000 trainiteraties. Voor dit aantal iteraties heeft het netwerk niet goed genoeg geleerd, wat resulteert in slechte resultaten. Na de 5000 iretaties gaat de presatie weer omlaag, waarschijnlijk door overfitting. \\\\
+Er is alleen gebruik gemaakt van de activatiemethode Tanh, omdat de trainresulaten eigenlijk goed genoeg zijn. Verbetering kan eerder plaatsvinden in de stuck- en remmethodes of aanpassing van de datasets. Dit is ook de rede, waarom er ook alleen gekozen is voor een Encog implementatie. Een kleine verbetering, wat door het gebruik van andere libraries of talen gerealiseerd kan worden, weegt niet op tegen de tijd en werk die erin gestoken moet worden. Daarom hebben we gekozen om een netwerk te kiezen en de stuck en -remmethode verder te ontwikkelen. Uit de resultaten bleek dat een aantal netwerken uitstoken boven de rest:
 \begin{itemize}
 \item 2 laags netwerk: eerste laag van 100 neurons, tweede laag van 40 neurons
 \item 3 laags netwerk: eerste laag van 100 neurons, tweede laag van 60 en een derde laag van 40 neurons.
 \item 2 laags netwerk: eerste laag van 200 neurons, tweede laag van 40 neurons. 
 \end{itemize}
-Met deze neurale netwerken zijn we nog veder gaan testen op, andere racetracks dan de 3 waar ze allemaal systematisch op getest zijn.
-%Uiteindelijke keuze om 2 netwerken volledig handmatig te testen en vergelijken. 
-
-
-%Gedeelte over de stuck methode, hoe die is gemaakt. Uitleg erover. (Doet Alex)
-		
-%Uiteindelijke keuze voor beste netwerk. (Alex )
-
-\textbf{wat kan beter}
-We waren te laat begonnen met een goed testplan op te zetten. Vooral aan een structuur over hoe we de presatatie kunnen beoordelen van de verschillende netwerken. \\\\
-
-\textbf{wat ging goed}
-we hadden daily standup meetings op school, hierdoor was het altijd duidelijk wat we moesten doen, hoe het met de andere persoon ging en wat voor werk er was vericht de dag daavoor.
-
-
-
-%Wat hadden we beter kunnen doen, wat kan er verbeterd worden. 
+Deze netwerken zijn verder getest op alle andere banen in Torcs, in de Gui mode, zodat duidelijk werd wat het verschil was tussen de netwerken (details). Het netwerk met 3 lagen, (100, 60, 40), was het snelst en meest betrouwbaar. Hierna is de stuck en rem methode perfect ingesteld voor dit netwerk.
+ \pagebreak
 \section{Conclusie}
-%Samenvatting Resultaten en wat er nog verbeterd kan worden
+Een controller voor Torcs is gemaakt, na onderzoek is gekozen om een neuraal netwerk te trainen in Java met de library Encog. Het neurale netwerk is getraind met de combined\_dataset.csv aangeboden door de vakdocent. Na het trainen en testen van verschillende neurale netwerken is uiteindelijk gekozen om een 3 laags neuraal netwerk te gebruiken, met de volgende instellingen van input naar output, (100,60,40). Als activatiefunctie is gebruik gemaakt van Tanh, omdat de gegevens in de dataset tussen -1 en 1 liggen.
 \pagebreak
 \section{Bijlages}
 \subsection{Architectuurontwerp}
@@ -217,9 +181,11 @@ we hadden daily standup meetings op school, hierdoor was het altijd duidelijk wa
 
 \subsection{Code}
 \subsubsection*{Stuck methode}
+\label{stuckmethode}
 \input{bijlages/stuckmethode.tex}
 \pagebreak
 \subsubsection*{Remmen begin race}
+\label{breaks}
 \input{bijlages/Adjustbreaks.tex}
 \newpage
 \input{bijlages/commitlog.tex}

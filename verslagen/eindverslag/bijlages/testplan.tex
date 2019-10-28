@@ -10,4 +10,11 @@ Het neurale netwerk kan ook getest worden in torcs, torcs heeft twee verschillen
 \item De max snelheid die een auto behaald tijdens 1 lap
 \end{itemize}
 \noindent De gui mode wordt gebruikt om te zien hoe het neurale netwerk de auto crasht en de auto zichzelf terugzet op de weg. Door de damage uit de vorige test kan er al worden geconstateert of een auto crasht. Elke crashsituatie is uniek, dus het is niet zeker of het neurale netwerk zichzelf terug kan plaatsen op de weg. Het beste neurale netwerk zal nooit crashen, maar om zeker te weten of het zichzelf uit een crash kan halen, moet er een crashsituatie gecre\"erd worden. Er kan voor gekozen worden om de simulatie gelijk te laten crashen en kijken hoe het neurale netwerk dit oppakt. Of te races op een dirttrack, hier zal de auto snel tegen een muur rijden, echter is het niet zeker of de unstuck methode hetzelfde werkt op de dirt track dan op een road track.\\\\
+De datasets zijn gemaakt op asfalt, daarom is het belangrijk dat er ook getest wordt op asfalt. Ook zijn bochten, rechte stukken en hellingen van belang in het testparcours. Er gaat getest worden op de volgende parcous(tracks).
+\begin{itemize}
+\item Aalborg
+\item Alpine 1
+\item Alpine 2
+\end{itemize}
+Omdat de data die gebruikt word voor het sturen van de torcs auto tussen de -1 en 1 zit is het verstandig om gebruik te maken van de tanh functie. Omdat tanh alle reëel getal tussen de -1 en 1 kan hebben, dus waarden zoals -0.875 ... en 0.132. Dit zorgt ervoor dat de uitkomst van een neuron niet een simple een ja of nee is maar veel complexer getal dat van alles en nog wat kan betekenen. Nu als er een kleine verandering plaatsvind in de weights of biases van het neurale netwerk zullen deze kleine verandering ook te vinden worden in de output, wat uiteindelijk zorgt dat het neurale netwerk zelf kan leren.\\\\
 Gedurende het testen wordt er gekeken welke testmethodes het beste werken en daar zullen we dan ook uiteindelijk mee gaan testen. In het kopje resultaten zal dit verder worden uitgelegd. 
