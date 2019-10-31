@@ -4,7 +4,7 @@
 Neurale netwerken zijn een reeks algoritmen die losjes gemodelleerd zijn van het menselijke brein. Een kunstmatig brein dat gemaakt is uit een hele grote reeks kunstmatige neuronen.
 
 \subsubsection{Perceptrons}
-Een van de meest fundamenteele kunstmatig neuron types is een perceptron.\cite{Perceptron1} Perceptronen zijn een belangrijk onderdeel van een neuraal netwerk en kennis hierover is nodig om een neuraal netwerk te begrijpen. Een perceptron pakt verschillende binary inputs:$x_{1}, x_{2},....x_{n}$ en produceerd een enkele binaire output. Je kan het zien als een functie die beslissingen voor je neemt, door verschillende factoren tegen elkaar te wegen en uiteindelijk met ja of nee te antwoorden.
+Een van de meest fundamentele kunstmatig neuron types is een perceptron.\cite{Perceptron1} Perceptronen zijn een belangrijk onderdeel van een neuraal netwerk en kennis hierover is nodig om een neuraal netwerk te begrijpen. Een perceptron pakt verschillende binaire inputs:$x_{1}, x_{2},....x_{n}$ en produceert een enkele binaire output. Je kunt het zien als een functie die beslissingen voor je neemt, door verschillende factoren tegen elkaar te wegen en uiteindelijk met ja of nee te antwoorden.
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.5]{perceptron2.png}
@@ -12,7 +12,7 @@ Een van de meest fundamenteele kunstmatig neuron types is een perceptron.\cite{P
 \label{peceptron2}
 \end{figure}
 \linebreak
-In afbeelding \ref{peceptron2} is een perceptron te zien die 3 variabelen als input neemt: $x_{1}, x_{2}$ en $x_{3}.$ Bij all deze waardes word een gewicht(weight) toegekend($w_{n}$). Deze waarde geeft aan hoe belangrijk de input is voor deze neuron. De output van de neuron is de som van alle resultaten bij elkaar. $\sum_{j}w_{j}x_{j}$ en deze waarde vergelijken met een gekozen randwaarde(threshold) om de output the berekenen. In een meer wiskundige term (w = weight, x = input en b = bias):
+In afbeelding \ref{peceptron2} is een perceptron te zien die 3 variabelen als input neemt: $x_{1}, x_{2}$ en $x_{3}.$ Bij  deze waardes word een gewicht(weight) toegekend($w_{n}$). Deze waarde geeft aan hoe belangrijk de input is voor deze neuron. De output van de neuron is de som van alle resultaten bij elkaar. $\sum_{j}w_{j}x_{j}$ en deze waarde vergelijken met een gekozen randwaarde(threshold) om de output te berekenen. In een meer wiskundige term (w = weight, x = input en b = bias):
 
 \begin{equation*}
 \text{output perceptron}= \begin{cases}
@@ -22,7 +22,7 @@ In afbeelding \ref{peceptron2} is een perceptron te zien die 3 variabelen als in
 \label{perceptron functie}
 \end{equation*}
 \newline
-\noindent Je kan de output van een neuron beinvloeden door te spelen met de weights en thresholds. Door een input zijn weight te vergroten of de threshold te verlagen kan er hele andere resultaten uit het model komen\cite{NeuralNetwork1}. 
+\noindent Je kan de output van een neuron beïnvloeden door te spelen met de weights en thresholds. Door een input zijn weight te vergroten of de threshold te verlagen kan er hele andere resultaten uit het model komen\cite{NeuralNetwork1}.
 \newpage
 \noindent Het is duidelijk dat de perceptron niet een compleet model is over hoe mensen hun beslissingen nemen. Maar het voorbeeld illustreert hoe een perceptron verschillende soorten bewijs kan afwegen om beslissingen te nemen. Daarom is het aannemelijk dat een complex netwerk van perceptrons vrij subtiele beslissingen zou moeten kunnen nemen\cite{NeuralNetwork1}.
 \begin{figure}[h!]
@@ -32,27 +32,26 @@ In afbeelding \ref{peceptron2} is een perceptron te zien die 3 variabelen als in
 \label{perceptron3}
 \end{figure}
 \newline
-In afbeelding \ref{perceptron3} is een netwerk te zien, waar de eerste laag van perceptrons in het netwerk, drie simpele beslissingen neemt door de functie in vergelijking \ref{perceptron fucntion} uit te voeren. Naast de eerste laag zit er nu ook een tweede die de outputs van de eerste laag als input neemt. Op deze manier kan een perceptron in de tweede laag een beslissing nemen op een complexer en abstracter niveau dan perceptrons in de eerste laag. Deze complexiteit en abstractheid word verhoogd per extra laag dat je toevoegd. Op deze manier kan een meerlaags netwerk van perceptrons, zeer geavanceerde beslissingen nemen\cite{NeuralNetwork1}\cite{learning}.\\ 
+In afbeelding \ref{perceptron3} is een netwerk te zien, waar de eerste laag van perceptrons in het netwerk, drie simpele beslissingen neemt door de functie in vergelijking \ref{perceptron fucntion} uit te voeren. Naast de eerste laag zit er nu ook een tweede die de outputs van de eerste laag als input neemt. Op deze manier kan een perceptron in de tweede laag een beslissing nemen op een complexer en abstracter niveau dan perceptrons in de eerste laag. Deze complexiteit en abstractheid word verhoogd per extra laag dat je toevoegt. Op deze manier kan een meerlaags netwerk van perceptrons, geavanceerde beslissingen nemen\cite{NeuralNetwork1}\cite{learning}.\\
 \newline
-De volgende stap is om ons netwerk zelf lerend te maken. Om dit te doen moet je kleine aanpassingen kunnen maken aand de weights en de biases. Deze kleine aanpassingen moet daarna ook een klein effect hebben op de output van het neurale netwerk. Echter dat is niet wat er gebeurt met perceptronen want deze heeft maar 2 outputs, een 1 en een 0. Een kleine aanpassing zal daarom niks doen of de hele uitkomst van de perceptron omdraaien. Je kan niet probleem omzeilen door een ander types neurons te gebruiken ,zoals de Sigmoid en tanh neurons.\cite{learning}
+De volgende stap is om ons netwerk zelf lerend te maken. Om dit te doen moet je kleine aanpassingen kunnen maken aan de weights en de biases. Deze kleine aanpassingen moet daarna ook een klein effect hebben op de output van het neurale netwerk. Echter, dat is niet wat er gebeurt met perceptronen want deze heeft maar 2 outputs, een 1 en een 0. Een kleine aanpassing zal daarom niks doen of de hele uitkomst van de perceptron omdraaien. Je kunt  het probleem niet omzeilen door een ander types neurons te gebruiken, zoals de Sigmoid en Tanh neurons.\cite{learning}
 \pagebreak
 \subsubsection{Activatie functies}
-De resultaten van een neuron worden berekend door een activatie functioes. Voor dit onderzoek worden eerst alleen de "Sigmoid" en "Tanh" activatie functies gebruikt, mochten deze niet goed werken worden andere activatie functies verder onderzocht\cite{learning}. \\\\
-De sigmoid en tanh neurons lijken erg op perceptrons, alleen de manier hoe de ouput berekend wordt is compleet anders. Een sigmoid function neemt alle mogelijke nummers als een input en berekent het naar een getal tussen de 0 en 1.\\\\
+De resultaten van een neuron worden berekend door een activatie functies. Voor dit onderzoek worden eerst alleen de "Sigmoid" en "Tanh" activatie functies gebruikt, mochten deze niet goed werken worden andere activatie functies verder onderzocht\cite{learning}. \\\\
+De sigmoid en tanh neurons lijken erg op perceptrons, alleen de manier hoe de output berekend wordt is compleet anders. Een Sigmoid functie neemt alle mogelijke nummers als een input en berekent het naar een getal tussen de 0 en 1.\\\\
 \begin{equation}
     i_ \theta (x) =  \frac{\mathrm{1} }{\mathrm{1} + e^{-x} }  \label{sigmoid}
   \end{equation}
-Een tanh functie neemt alle mogelijke nummers als input en brekend het naar en getal tussen de -1 en de 0.\\
+Een tanh functie neemt alle mogelijke nummers als input en brekend het naar een getal tussen de -1 en de 0.\\
 \begin{equation}
     j_ \theta (x) =  \frac{\mathrm{2} }{\mathrm{1} + e^{-2x} } -1 \label{tanh}
   \end{equation}
   \linebreak
-  \noindent De twee berekeningen lijken erg op elkaar, omdat tanh een geschaalde vorm is van de sigmoid functions.
-
-Omdat de data die gebruikt word voor het sturen van de torcs auto tussen de -1 en 1 zit is het verstandig om gebruik te maken van de tanh functie. Omdat tanh alle reëel getal tussen de -1 en 1 kan hebben, dus waarden zoals -0.875 en 0.132. Dit zorgt ervoor dat de uitkomst van een neuron niet een simple een ja of nee is maar veel complexer getal dat van alles en nog wat kan betekenen. Nu als er een kleine verandering plaatsvind in de weights of biases van het neurale netwerk zullen deze kleine verandering ook te vinden worden in de output, wat uiteindelijk zorgt dat het neurale netwerk zelf kan leren.\\\\
+  \noindent De twee berekeningen lijken erg op elkaar, omdat Tanh een geschaalde vorm is van de Sigmoid functions.
+Omdat de data die gebruikt word voor het sturen van de Torcs auto tussen de -1 en 1 zit is het verstandig om gebruik te maken van de Tanh functie. Omdat Tanh alle reëel getal tussen de -1 en 1 kan hebben, dus waarden zoals -0.875 en 0.132. Dit zorgt ervoor dat de uitkomst van een neuron niet een simpel een ja of nee is, maar veel complexer getal dat veel meer kan betekenen. Nu als er een kleine verandering plaatsvind in de weights of biases van het neurale netwerk zullen deze kleine verandering ook te vinden worden in de output, wat uiteindelijk zorgt dat het neurale netwerk zelf kan leren.\\\\
 
 \subsubsection{Zelf lerend netwerk}
-Er is data nodig om een neuraal netwerk te trainen. Nadat deze data verzameld is kan er gebruik gemaakt worden van een methode die het neurale netwerk traint. Voorbeeld van zulke methodes zijn forward propagation, back propagation en resilent propagation. Het doel van deze algoritmes is om alle neuronen een weight en een bias te geven. Hoe dat in praktijk gaat hangt af van de dataset en welk algoritmn er gebruikt gaat worden, kort samengevat gaat het op deze manier\cite{learning}:
+Er is data nodig om een neuraal netwerk te trainen. Nadat deze data verzameld is kan er gebruik gemaakt worden van een methode die het neurale netwerk traint. Voorbeeld van zulke methodes zijn forward propagation, back propagation en resilent propagation. Het doel van deze algoritmes is om alle neuronen een weight en een bias te geven. Hoe dat in praktijk gaat, hangt af van de dataset en welk algoritme er gebruikt gaat worden, kort samengevat gaat het op deze manier\cite{learning}:
 \begin{itemize}
 \item De start waarden voor de weights en biases zijn vaak random.
 \item De dataset wordt meegegeven aan het network en daar wordt data/resultaten uit gegenereerd.
@@ -62,9 +61,9 @@ Er is data nodig om een neuraal netwerk te trainen. Nadat deze data verzameld is
 \end{itemize}
 
 \subsubsection{Overfitting}
-Neurale netwerken zijn erg kwetsbaar voor overfitting. Dit is als een neural netwerk alleen kan omgaan met de data uit een specifieke dataset en niet goed reageert op toekomstige waarnemingen. De informatie in deze sectie komt uit het boek "Algoritms to live by" \cite{algoritms}\\ 
+Neurale netwerken zijn erg kwetsbaar voor overfitting. Dit is als een neuraal netwerk alleen kan omgaan met de data uit een specifieke dataset en niet goed reageert op toekomstige waarnemingen. De informatie in deze sectie komt uit het boek "Algoritms to live by" \cite{algoritms}\\
 \newline
-Overfitting ontstaat door het opnemen van een overvloed aan factoren in het neurale netwerk. Dit kan door heel veel specifieke data te geven aan het netwerk of door heel veel neuronen te gebruiken, die connecties gaan maken met de gegeven data. Wanneer dit gebeurt, zal het netwerk goed passend zijn voor de bestaande gegevens/input, maar een betere pasvorm voor de trainiingsset, hoeft niet te resulteren in een betere prestatie. \\
+Overfitting ontstaat door het opnemen van een overvloed aan factoren in het neurale netwerk. Dit kan door heel veel specifieke data te geven aan het netwerk of door heel veel neuronen te gebruiken, die connecties gaan maken met de gegeven data. Wanneer dit gebeurt, zal het netwerk goed passend zijn voor de bestaande gegevens/input, maar een betere pasvorm voor de trainingsset, hoeft niet te resulteren in een betere prestatie. \\
 \newline
 Voor een netwerk met te weinig train data en/of neurons(Underfitting), als het neurale netwerk te eenvoudig wordt gemaakt, kan deze het essenti\"ele patroon in de data niet vastleggen.\\
 \newline

@@ -68,15 +68,14 @@
 \newpage
 
 \section{Samenvatting}
-Voor Tinlab Machine Learning moest een controller worden gemaakt voor het computer programma Torcs. Om dit te realiseren is onderzoek gedaan in Machine Learning principes. Na dit onderzoek is er een neuraal netwerk gemaakt in Java met de behulp van de library Encog. Dit netwerk kan een auto in Torcs op elk parcours van start tot finish brengen zonder dat deze crashed. Zelfs met de "Noicy sensoren" is dit nog niet voorgekomen. 
+Voor Tinlab Machine Learning moest een controller worden gemaakt voor het computer programma Torcs. Om dit te realiseren is onderzoek gedaan in Machine Learning principes. Na dit onderzoek is er een neuraal netwerk gemaakt in Java met behulp van de library Encog. Dit netwerk kan een auto in Torcs op elk parcours van start tot finish brengen zonder dat deze crashes. Zelfs met de "Noicy sensoren" is dit nog niet voorgekomen. 
 \pagebreak
 \section{Inleiding}
 Voor Tinlab Machine Learning wordt de verworven kennis over Machine Learning toegepast door een intelligente controller te maken voor race simulatie Torcs. In plaats van zelf aan de knoppen te zitten en de auto te besturen, zal er een programma geschreven worden die aan de hand van getrainde modellen en binnenkomende data zelfstandig de auto bestuurd. 
 
-
 \section{Projectopzet}
 Er wordt tijdens dit project gebruik gemaakt van een versie van Agile. Het werk wordt verdeeld in kleine opdrachten die afgemaakt moeten worden in een periode van twee weken. Voordat de kleine opdrachten worden gemaakt, is er een algemene planning gemaakt. De eerste draft is in section \ref{eerste-draft} te vinden. De uiteindelijke gerealiseerde planning staat in bijlage \ref{uiteind-plan}.\\\\
-Om de code en verslagen op te slaan van dit project gebruiken wij Github, in bijlage \ref{commitlog} is de log te vinden van de commits. Alle verslagen worden lokaal geschreven in Latex en als de taak klaar is gepusht op Github.
+Om de code en verslagen op te slaan van dit project gebruiken we Github, in bijlage \ref{commitlog} is de log te vinden van de commits. Alle verslagen worden lokaal geschreven in Latex en als de taak klaar is gepusht op Github.
 
 \subsection{Algemene planning}
 \label{eerste-draft}
@@ -98,26 +97,27 @@ Om de code en verslagen op te slaan van dit project gebruiken wij Github, in bij
 
 \subsection*{Product backlog}
 
+
 \begin{table}[h]
 \begin{tabularx}{\textwidth}{l C}
- \textbf{Prioriteit} & \textbf{User story}\\ \hline
- Must & Als projectlid, neem ik deel aan de boekenclub gehost bij klasgenoten, 
-zodat ikmeer informatie over Machine Learning verkrijg\\ \hline
- Must & Als projectlid, host ik een boekenclub voor klasgenoten over een thema binnen de AI, zodat ik meer informatie over Machine Learning leer en uitdeel\\\hline
-Must & Als project lid, maak ik een persoonlijk verslag, over de wekelijkse geleerde stof en zelfopgedane kennis, zodat ik meer informatie over Machine Learning verkijg.   \\\hline
- Must & Als projectlid, schrijf ik een ethische verantwoording, zodat er een ethisch product wordt geleverd.   \\\hline
- Must & Als projectlid, wil ik een controller trainen, die een auto rijdt in het computerprogramma torcs, zodat het vak behaald kan worden \\\hline
-Should have & Als project lid, train ik een netwerk dat geen schade rijdt, omdat een controller die niet crashed goed getrained is. \\\hline
-Should have & Als project lid, wil ik veel verschillende soorten netwerken trainen, zodat we veel netwerken met elkaar kunnen vergelijken en een conclusie kunnen trekken over welke eigenschappen een postieve of negatieve invloed hebben. \\
+\textbf{Prioriteit} & \textbf{User story}\\ \hline
+Must & Als projectlid, neem ik deel aan de boekenclub gehost bij klasgenoten,
+zodat ik meer informatie over Machine Learning verkrijg\\ \hline
+Must & Als projectlid, host ik een boekenclub voor klasgenoten over een thema binnen de AI, zodat ik meer informatie over Machine Learning leer en uitdeel\\\hline
+Must & Als project lid, maak ik een persoonlijk verslag, over de wekelijkse geleerde stof en zelf opgedane kennis, zodat ik meer informatie over Machine Learning verkrijg. \\\hline
+Must & Als projectlid, schrijf ik een ethische verantwoording, zodat er een ethisch product wordt geleverd. \\\hline
+Must & Als projectlid, wil ik een controller trainen, die een auto rijdt in het computerprogramma Torcs, zodat het vak behaald kan worden \\\hline
+Should have & Als project lid, train ik een netwerk dat geen schade rijdt, omdat een controller die niet crashes een goed getrainde controller is. \\\hline
+Should have & Als project lid, wil ik veel verschillende soorten netwerken trainen, zodat we veel netwerken met elkaar kunnen vergelijken en een conclusie kunnen trekken over welke eigenschappen een positieve of negatieve invloed hebben. \\
 \end{tabularx}
-\end{table} 
+\end{table}
  
 \subsection*{Eisen controller}
 \begin{itemize}
 \item Het neurale netwerk moet de auto snel de baan laten afleggen (50 km/u gaan over heel de baan is dus niet goed.)
-\item Getraind worden door een van de AI technieken
-\item Neurale network is getrained met de gegeven train data
-\item Voorafgesteld doel halen (Start - Finish)
+\item Getraind worden door een van de AI-technieken
+\item Neurale network is getraind met de gegeven train data
+\item Vooropgesteld doel halen (Start - Finish)
 \item Er moet zo weinig mogelijke schade aan de auto zitten
 \end{itemize}
 
@@ -126,26 +126,26 @@ Should have & Als project lid, wil ik veel verschillende soorten netwerken train
 \input{vooronderzoek.tex}
 \pagebreak
 \section{Methode}
-Aan het begin van het project zijn meerdere datasets gemaakt door de input en output te loggen van een goed rijdend systeem. Deze datasets zullen gebruikt worden om het neurale netwerk te trainen en/of testen.\\\\ 
+Aan het begin van het project zijn meerdere datasets gemaakt door de input en output te loggen van een goed rijdend systeem. Deze datasets zullen gebruikt worden om het neurale netwerk te trainen en/of testen.\\\\
 Voor communicatie met de "Torcs server" kan er gebruik gemaakt worden van een client in Java of C++. De Java client heeft de voorkeur, met als voornaamste reden dat er op github~\cite{java-client} een opzet te vinden is om een Neural Netwerk te schrijven in de taal Java. Deze versie maakt gebruik van een algoritme, dat niet door Machine Learning is gemaakt. \\\\
 Het eindproduct zal een neuraal netwerk zijn dat getraind is door middel van een dataset en verifi\"erd door andere datasets. Aanpassingen in de instellingen van het neurale netwerk zullen uiteindelijk leiden tot de beste controller. Het neurale netwerk zal tijdens het trainen na een X aantal iteraties opgeslagen worden en bij vroegtijdig stopzetten kan de training ook weer hervat worden, vanaf de laatst opgeslagen iteratie. \\\\
-Het getrainde neurale netwerk kan geverifi\"erd worden op twee manieren, namelijk met de testdatasets of door het neurale netwerk te gebruiken in Torcs. Resulaten van de test met de datasets is binnen enkele secondes uitgerekend en kan het eerste onderscheid geven. Bij het gebruiken van Torcs is duidelijk te zien hoe het neurale netwerk reageert op de omgeving en of en hoe het vastloopt. In de resultaten zal dan het verband uitgelegd worden tussen de instellingen van het neurale netwerk en resultaten. Meer informatie hierover is te vinden in het testplan, wat wij ook zullen uitvoeren, zie bijlage \ref{testplan}. \\\\
-Java is gekozen als taal om het neurale netwerk te trainen. De beste manier voor een neuraal netwerk te programeren is door gebruik te maken van bestaande libaries. Na wat googlen kwamen we op twee opties, de java library Encog gebruiken\cite{encog} of een andere taal gebruiken en deze koppelen aan de client van Elvira door een UDP verbinding. De laatste optie zal het meeste werk kosten, dus er is gekozen om eerst te kijken wat Encog voor Neuraal Netwerk opleverd. 
+Het getrainde neurale netwerk kan geverifi\"erd worden op twee manieren, namelijk met de testdatasets of door het neurale netwerk te gebruiken in Torcs. Resultaten van de test met de datasets is binnen enkele secondes uitgerekend en kan het eerste onderscheid geven. Bij het gebruiken van Torcs is duidelijk te zien hoe het neurale netwerk reageert op de omgeving en of en hoe het vastloopt. In de resultaten zal dan het verband uitgelegd worden tussen de instellingen van het neurale netwerk en resultaten. Meer informatie hierover is te vinden in het testplan, wat we ook zullen uitvoeren, zie bijlage \ref{testplan}. \\\\
+Java is gekozen als taal om het neurale netwerk te trainen. De beste manier voor een neuraal netwerk te programmeren is door gebruik te maken van bestaande libaries. Na wat googelen kwamen we op twee opties, de Java library Encog gebruiken\cite{encog} of een andere taal gebruiken en deze koppelen aan de client van Elvira door een UDP-verbinding. De laatste optie zal het meeste werk kosten, dus er is gekozen om eerst te kijken wat Encog voor Neuraal Netwerk oplevert.
 \\\\
 Trainen en cree\"eren van het netwerk moet gemakkelijk kunnen op een server, zodat beide projectgenoten bij de training kunnen komen. Dit kan door middel van een jar file, deze jar file en de datasets zijn als enige nodig om een neuraal netwerk te genereren en trainen.
 \pagebreak
 \section{Resultaten}
-Tijdens het uitvoeren van de methodes van het testplan ~\ref{testplan} werd al snel duidelijk dat \'e\'en methode niet het verwachte resultaat leverde. De error, die wordt berekend met de datasets, heeft geen verband met de prestatie in Torcs. Het is belangrijk dat het neurale netwerk in Torcs goed functioneerd. Daarom is besloten om deze methode niet verder te gebruiken, deze optie is echter nog in de source code te vinden.  \\\\
+Tijdens het uitvoeren van de methodes van het testplan ~\ref{testplan} werd al snel duidelijk dat \'e\'en methode niet het verwachte resultaat leverde. De error, die wordt berekend met de datasets, heeft geen verband met de prestatie in Torcs. Het is belangrijk dat het neurale netwerk in Torcs goed functioneerd. Daarom is besloten om deze methode niet verder te gebruiken, deze optie is echter nog in de source code te vinden. \\\\
 In de testresulaten ~\ref{testresulaten} is goed het verschil te zien tussen de netwerken. Tijdens het testen hebben we een stuckmethode en remmethode toegevoegd. In bepaalde situaties nemen deze methodes/algorithme het neurale netwerk over. Deze algoritmes zijn nodig om de auto van de baan te krijgen na een crash of sneller te laten opstarten. Bij elk neurale netwerk en race remde het autonome netwerk bij het begin van de race, dit is natuurlijk niet nodig. In bijlage \ref{breaks} en \ref{stuckmethode} is de uiteindelijke implementatie te vinden van deze methodes. \\\\
-%Uitleg geven over de testresulaten, zie bijlage \ref{testresulaten}. 
-De meeste netwerken trainen niet verder binnen de range van 3000 en 5000 trainiteraties. Voor dit aantal iteraties heeft het netwerk niet goed genoeg geleerd, wat resulteert in slechte resultaten. Na de 5000 iretaties gaat de presatie weer omlaag, waarschijnlijk door overfitting. \\\\
-Er is alleen gebruik gemaakt van de activatiemethode Tanh, omdat de resulaten goed genoeg zijn. Verbetering kan eerder plaatsvinden in de stuck- en remmethodes of aanpassing van de datasets. Dit is ook de rede, waarom er ook alleen gekozen is voor een Encog implementatie. Een kleine verbetering, wat door het gebruik van andere libraries of talen gerealiseerd kan worden, weegt niet op tegen de tijd en werk die erin gestoken moet worden. Daarom hebben we gekozen om een netwerk te kiezen en de stuck en -remmethode verder te ontwikkelen. Uit de resultaten bleek dat een aantal netwerken uitstoken boven de rest:
+%Uitleg geven over de testresulaten, zie bijlage \ref{testresulaten}.
+De meeste netwerken trainen niet verder binnen de range van 3000 en 5000 train iteraties. Voor dit aantal iteraties heeft het netwerk niet goed genoeg geleerd, wat resulteert in slechte resultaten. Na de 5000 iteraties gaat de prestatie weer omlaag, dit is waarschijnlijk veroorzaakt door overfitting. \\\\
+Er is alleen gebruik gemaakt van de activatiemethode Tanh, omdat de resultaten goed genoeg zijn. Verbetering kan eerder plaatsvinden in de stuck- en rem methodes of aanpassing van de datasets. Dit is ook de rede, waarom er ook alleen gekozen is voor een Encog implementatie. Een kleine verbetering, wat door het gebruik van andere libraries of talen gerealiseerd kan worden, weegt niet op tegen de tijd en werk die erin gestoken moet worden. Daarom hebben we gekozen om een netwerk te kiezen en de stuck en -remmethode verder te ontwikkelen. Uit de resultaten bleek dat enkele netwerken uitsteken boven de rest
 \begin{itemize}
 \item 2 laags netwerk: eerste laag van 100 neurons, tweede laag van 40 neurons
 \item 3 laags netwerk: eerste laag van 100 neurons, tweede laag van 60 en een derde laag van 40 neurons.
 \item 2 laags netwerk: eerste laag van 200 neurons, tweede laag van 40 neurons. 
 \end{itemize}
-Deze netwerken zijn verder getest op alle andere banen in Torcs, in de Gui mode, zodat duidelijk werd wat het verschil was tussen de netwerken (details). Het netwerk met 3 lagen, (100, 60, 40), was het snelst en meest betrouwbaar. Hierna is de stuck en rem methode perfect ingesteld voor dit netwerk.
+Deze netwerken zijn verder getest op alle andere banen in Torcs, in de Gui mode, zodat duidelijk werd wat het verschil was tussen de netwerken (details). Het netwerk met 3 lagen, (100, 60, 40), was het snelst en meest betrouwbaar. Hierna is de stuk en rem methode perfect ingesteld voor dit netwerk.
  \pagebreak
 \section{Conclusie}
 Een controller voor Torcs is gemaakt, na onderzoek is gekozen om een neuraal netwerk te trainen in Java met de library Encog. Het neurale netwerk is getraind met de combined\_dataset.csv aangeboden door de vakdocent. Na het trainen en testen van verschillende neurale netwerken is uiteindelijk gekozen om een 3 laags neuraal netwerk te gebruiken dat is opgemaakt uit lagen van 100, 60 en 40 neuronen. Voor alle lagen wordt gebruik gemaakt van de activatiefunctie Tanh. Wanneer het neurale netwerk vastloopt, zal een algoritme het neurale netwerk tijdelijk overnemen.
@@ -211,7 +211,7 @@ Hiervoor is de folder train\_data nodig waar alle testdatasets in staan, deze wo
 Gebruken van neurale netwerk in Torcs, hiervoor moet de 'torcs.properties' file ingevuld worden en een network file staan in de 'network' map. Na het uitvoeren van de jar en command kan de naam van het network worden ingevuld.
 \pagebreak
 \subsection{Code}
-\subsubsection*{Stuck methode}
+\subsubsection*{Stuk methode}
 \label{stuckmethode}
 \input{bijlages/stuckmethode.tex}
 \pagebreak
